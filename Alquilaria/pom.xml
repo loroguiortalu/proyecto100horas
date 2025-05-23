@@ -20,15 +20,6 @@
         </repository>
     </repositories>
     <dependencies>
-        <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>swing-layout-1.0.4</artifactId>
-            <version>SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>SlideShow</artifactId>
-            <version>SNAPSHOT</version>
-        </dependency>
+        
     </dependencies>
 </project>
