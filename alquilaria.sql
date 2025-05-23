@@ -24,6 +24,8 @@ CREATE TABLE housetype (
 INSERT INTO housetype (wenglish, wspanish) VALUES ('house', 'casa'); -- 1
 INSERT INTO housetype (wenglish, wspanish) VALUES ('apartment', 'apartamento'); -- 2
 INSERT INTO housetype (wenglish, wspanish) VALUES ('atic', 'ático'); -- 3
+-- you have also to insert this options, also you could add more
+
 
 
 -- Creation of  table to store contract statuses with translations
@@ -37,6 +39,8 @@ CREATE TABLE contractstatus (
 INSERT INTO housetype (wenglish, wspanish) VALUES ('active', 'activo'); -- 1
 INSERT INTO housetype (wenglish, wspanish) VALUES ('expired', 'vencido'); -- 2
 INSERT INTO housetype (wenglish, wspanish) VALUES ('pending', 'pendiente'); -- 3
+
+
 
 
 
@@ -90,8 +94,12 @@ CREATE TABLE contractt (
     enddate DATE,
     mprice DECIMAL(10,2),
     statuses INT,
-    FOREIGN KEY fk_contractstatus (contractstatus) REFERENCES contractstatus(id)
-
+    id_house VARCHAR(50),
+    id_tenant INT,
+    PRIMARY KEY (code_house, id_tenant),
+    FOREIGN KEY fk_contractstatus (contractstatus) REFERENCES contractstatus(id),
+    FOREIGN KEY fk_codehouse (code_house) REFERENCES house(code),
+    FOREIGN KEY fk_idtenant (id_tenant) REFERENCES tenant(id)
 );
 
 
