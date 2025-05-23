@@ -29,7 +29,8 @@ INSERT INTO housetype (wenglish, wspanish) VALUES ('atic', 'ático'); -- 3
 
 
 -- Creation of  table to store contract statuses with translations
-DROP TABLE IF EXISTS contractstatus;
+DROP TABLE IF EXIST
+S contractstatus;
 CREATE TABLE contractstatus (
     id INT AUTO_INCREMENT PRIMARY KEY,
     wenglish VARCHAR(50) NOT NULL,

@@ -6,11 +6,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class ConexionDB {
+public class ConnectionDB {
 
     private static Connection conexion = null;
     
-    private ConexionDB() {}
+    private ConnectionDB() {}
     
     // función que hace que si la conexión está cerrada o es nula (como es por defecto) la crea conectandose a la base de datos pi_actfinaldb
     public static Connection obtenerConexion() throws SQLException {
