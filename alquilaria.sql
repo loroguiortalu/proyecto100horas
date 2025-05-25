@@ -1,6 +1,6 @@
---------------------------------------------
+-- ------------------------------------------
 -- database for Alquilaria project
---------------------------------------------
+-- ------------------------------------------
 
 -- Creation (and drop just in case)
 DROP DATABASE IF EXISTS alquilariadb;
@@ -11,14 +11,12 @@ USE alquilariadb;
 
 
 
-
-
 -- Creation of  table to store house types with translations
 DROP TABLE IF EXISTS housetype;
 CREATE TABLE housetype (
     id INT AUTO_INCREMENT PRIMARY KEY,
     wenglish VARCHAR(50) NOT NULL,
-    wspanish VARCHAR(50) NOT NULL,
+    wspanish VARCHAR(50) NOT NULL
 );
 
 INSERT INTO housetype (wenglish, wspanish) VALUES ('house', 'casa'); -- 1
@@ -29,17 +27,16 @@ INSERT INTO housetype (wenglish, wspanish) VALUES ('atic', 'ático'); -- 3
 
 
 -- Creation of  table to store contract statuses with translations
-DROP TABLE IF EXIST
-S contractstatus;
+DROP TABLE IF EXISTS contractstatus;
 CREATE TABLE contractstatus (
     id INT AUTO_INCREMENT PRIMARY KEY,
     wenglish VARCHAR(50) NOT NULL,
-    wspanish VARCHAR(50) NOT NULL,
+    wspanish VARCHAR(50) NOT NULL
 );
 
-INSERT INTO housetype (wenglish, wspanish) VALUES ('active', 'activo'); -- 1
-INSERT INTO housetype (wenglish, wspanish) VALUES ('expired', 'vencido'); -- 2
-INSERT INTO housetype (wenglish, wspanish) VALUES ('pending', 'pendiente'); -- 3
+INSERT INTO contractstatus (wenglish, wspanish) VALUES ('active', 'activo'); -- 1
+INSERT INTO contractstatus (wenglish, wspanish) VALUES ('expired', 'vencido'); -- 2
+INSERT INTO contractstatus (wenglish, wspanish) VALUES ('pending', 'pendiente'); -- 3
 
 
 
@@ -47,30 +44,29 @@ INSERT INTO housetype (wenglish, wspanish) VALUES ('pending', 'pendiente'); -- 3
 
 
 -- Creation of PropertyOwner table 
-DROP TABLE IF EXISTS powner;
-CREATE TABLE powner (
-    dni VARCHAR(10),
-    id INT AUTO_INCREMENT,
-    namee VARCHAR(50) NOT NULL,
+DROP TABLE IF EXISTS owner;
+CREATE TABLE owner (
+    dni VARCHAR(10) NOT NULL UNIQUE,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
     phonenumber VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    PRIMARY KEY(dni, id)
+    email VARCHAR(50) NOT NULL
 );
 
 
 -- Creation of House table 
 DROP TABLE IF EXISTS house;
 CREATE TABLE house (
-    addresss VARCHAR(200),
-    mrent DECIMAL(10,2),
+    address VARCHAR(200),
+    rent DECIMAL(10,2),
     surface INT,
-    descriptionn VARCHAR(1000),
+    description VARCHAR(1000),
     allowsPets BOOLEAN,
     code VARCHAR(50) PRIMARY KEY,
-    houset INT,
+    housetyp INT,
     id_owner INT,
-    FOREIGN KEY fk_idowner (id_owner) REFERENCES powner(id),
-    FOREIGN KEY fk_houset (houset) REFERENCES housetype(id)
+    FOREIGN KEY fk_idowner (id_owner) REFERENCES owner(id),
+    FOREIGN KEY fk_houset (housetyp) REFERENCES housetype(id)
 );
 
 
@@ -78,27 +74,27 @@ CREATE TABLE house (
 -- Creation of Tenant table 
 DROP TABLE IF EXISTS tenant;
 CREATE TABLE tenant (
-    dni VARCHAR(10),
-    namee VARCHAR(50) NOT NULL,
+    dni VARCHAR(10) NOT NULL,
+    name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     phonenumber VARCHAR(50) NOT NULL,
     haspets BOOLEAN,
-    id INT AUTO_INCREMENT
+    id INT AUTO_INCREMENT PRIMARY KEY
 );
 
 
 
 -- Creation of Contract table, wich in theory it is not an entity, therefore, primary key is not needed
-DROP TABLE IF EXISTS contractt;
-CREATE TABLE contractt (
+DROP TABLE IF EXISTS contract;
+CREATE TABLE contract (
     initdate DATE,
     enddate DATE,
-    mprice DECIMAL(10,2),
-    statuses INT,
-    id_house VARCHAR(50),
+    price DECIMAL(10,2),
+    status INT,
+    code_house VARCHAR(50),
     id_tenant INT,
     PRIMARY KEY (code_house, id_tenant),
-    FOREIGN KEY fk_contractstatus (contractstatus) REFERENCES contractstatus(id),
+    FOREIGN KEY fk_contractstatus (status) REFERENCES contractstatus(id),
     FOREIGN KEY fk_codehouse (code_house) REFERENCES house(code),
     FOREIGN KEY fk_idtenant (id_tenant) REFERENCES tenant(id)
 );
