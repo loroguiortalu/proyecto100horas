@@ -7,6 +7,10 @@ package View.SPA.Propietario;
 import View.SPA.*;
 import View.*;
 import javax.swing.JOptionPane;
+import Model.SPA.OperacionesPropietario;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -216,9 +220,37 @@ public class AddPropietario extends javax.swing.JFrame {
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-        // TODO add your handling code here:
-         JOptionPane.showMessageDialog(this, "El propietario se ha introducido");
-         
+        
+        boolean boo = false;
+
+        try {
+            // TODO add your handling code here:
+
+            if (DniField.getText().isEmpty() || NameField.getText().isEmpty() || phoneField.getText().isEmpty() || emailField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos", "Error", JOptionPane.ERROR_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                return;
+            } else {
+                boo = OperacionesPropietario.insertPropietario(DniField.getText(), NameField.getText(), phoneField.getText(), emailField.getText());
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AddPropietario.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error al insertar el propietario", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+
+        if (boo) {
+            JOptionPane.showMessageDialog(this, "El propietario se ha introducido correctamente");
+            DniField.setText("");
+            NameField.setText("");
+            phoneField.setText("");
+            emailField.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al insertar el propietario", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_AddButtonActionPerformed
 
     /**
