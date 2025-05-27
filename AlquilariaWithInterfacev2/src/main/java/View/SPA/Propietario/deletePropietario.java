@@ -16,14 +16,14 @@ import java.util.logging.Logger;
  *
  * @author Loro
  */
-public class AddPropietario extends javax.swing.JFrame {
+public class deletePropietario extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AddPropietario.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(deletePropietario.class.getName());
 
     /**
      * Creates new form Spanish
      */
-    public AddPropietario() {
+    public deletePropietario() {
         initComponents();
         setLocationRelativeTo(null);//center in the screen
         
@@ -47,15 +47,9 @@ public class AddPropietario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Atras = new javax.swing.JButton();
         jLabelChooseLanguage1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        DniField = new javax.swing.JTextField();
-        NameField = new javax.swing.JTextField();
+        idField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        phoneField = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        emailField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        AddButton = new javax.swing.JButton();
+        BorrButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -101,37 +95,19 @@ public class AddPropietario extends javax.swing.JFrame {
 
         jLabelChooseLanguage1.setFont(new java.awt.Font("Futura", 0, 48)); // NOI18N
         jLabelChooseLanguage1.setForeground(new java.awt.Color(51, 0, 0));
-        jLabelChooseLanguage1.setText("Añadir Propietario");
+        jLabelChooseLanguage1.setText("Borrar Propietario");
 
-        jLabel2.setFont(new java.awt.Font("Caladea", 0, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel2.setText("DNI");
-
-        DniField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-
-        NameField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        idField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Caladea", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel3.setText("Nombre");
+        jLabel3.setText("Id");
 
-        phoneField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-
-        jLabel5.setFont(new java.awt.Font("Caladea", 0, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel5.setText("Teléfono");
-
-        emailField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-
-        jLabel7.setFont(new java.awt.Font("Caladea", 0, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel7.setText("Email");
-
-        AddButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-        AddButton.setText("Añadir");
-        AddButton.addActionListener(new java.awt.event.ActionListener() {
+        BorrButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        BorrButton.setText("Borrar");
+        BorrButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddButtonActionPerformed(evt);
+                BorrButtonActionPerformed(evt);
             }
         });
 
@@ -144,55 +120,32 @@ public class AddPropietario extends javax.swing.JFrame {
                 .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(163, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(DniField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(131, 131, 131))
+                        .addComponent(BorrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(214, 214, 214))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(222, 222, 222))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelChooseLanguage1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(131, 131, 131))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addGap(108, 108, 108)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DniField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(64, 64, 64)
-                .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGap(77, 77, 77)
+                .addComponent(BorrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
                 .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -214,42 +167,54 @@ public class AddPropietario extends javax.swing.JFrame {
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         // TODO add your handling code here:
         // botón atrás
-        new MantenimientoPropietario().setVisible(true);
+        new MantenimientoPropietario().setVisible(true); 
         this.dispose();
 
     }//GEN-LAST:event_AtrasActionPerformed
 
-    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
+    private void BorrButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrButtonActionPerformed
         // TODO add your handling code here:
         boolean boo = false;
+        boolean isNum = false;
+        int num = 0;
 
-        try {
+        if (idField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+        } else {
 
-            if (DniField.getText().isEmpty() || NameField.getText().isEmpty() || phoneField.getText().isEmpty() || emailField.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Rellene todos los campos", "Error", JOptionPane.ERROR_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
-                return;
-            } else {
-                boo = OperacionesPropietario.insertPropietario(DniField.getText(), NameField.getText(), phoneField.getText(), emailField.getText());
+            try {
+                num = Integer.parseInt(idField.getText());
+                isNum = true;
+
+            } catch (NumberFormatException ex) {
+                isNum = false;
             }
 
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al insertar el propietario", "Error", JOptionPane.ERROR_MESSAGE);
+            if (isNum) {
+
+                try {
+
+                    boo = OperacionesPropietario.borrPropietario(num);
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al borrar el propietario", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                if (boo) {
+                    JOptionPane.showMessageDialog(this, "El propietario se ha borrado satisfactoriamente","Info", JOptionPane.INFORMATION_MESSAGE);
+                    idField.setText("");
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al borrar al propietario", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }else{
+                JOptionPane.showMessageDialog(this, "Error, el campo id debe de ser únicamente un número", "Error", JOptionPane.ERROR_MESSAGE);
+            
+            }
+
         }
-        
-        
-
-        if (boo) {
-            JOptionPane.showMessageDialog(this, "El propietario se ha introducido correctamente");
-            DniField.setText("");
-            NameField.setText("");
-            phoneField.setText("");
-            emailField.setText("");
-        } else {
-            JOptionPane.showMessageDialog(this, "Error al insertar el propietario", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-
-
-    }//GEN-LAST:event_AddButtonActionPerformed
+    }//GEN-LAST:event_BorrButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,27 +238,21 @@ public class AddPropietario extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new AddPropietario().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new deletePropietario().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddButton;
     private javax.swing.JButton Atras;
-    private javax.swing.JTextField DniField;
+    private javax.swing.JButton BorrButton;
     private javax.swing.JTextField DniField2;
     private javax.swing.JTextField DniField4;
-    private javax.swing.JTextField NameField;
-    private javax.swing.JTextField emailField;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField idField;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelChooseLanguage;
     private javax.swing.JLabel jLabelChooseLanguage1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField phoneField;
     // End of variables declaration//GEN-END:variables
 }

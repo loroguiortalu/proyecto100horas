@@ -5,7 +5,8 @@
 package View.SPA;
 
 import View.*;
-import View.SPA.Propietario.AddPropietario;
+import View.SPA.Propietario.*;
+import java.sql.ResultSet;
 
 /**
  *
@@ -169,6 +170,8 @@ public class MantenimientoPropietario extends javax.swing.JFrame {
 
     private void BorrarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarPropietarioActionPerformed
         // TODO add your handling code here:
+        new deletePropietario().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BorrarPropietarioActionPerformed
 
     private void ModificarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPropietarioActionPerformed
@@ -177,6 +180,9 @@ public class MantenimientoPropietario extends javax.swing.JFrame {
 
     private void ConnsultarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnsultarPropietarioActionPerformed
         // TODO add your handling code here:
+
+        
+        
     }//GEN-LAST:event_ConnsultarPropietarioActionPerformed
 
     private void AddPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPropietarioActionPerformed
