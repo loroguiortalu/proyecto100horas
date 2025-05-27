@@ -85,6 +85,7 @@ public class deletePropietario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(224, 254, 224));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
+        Atras.setBackground(new java.awt.Color(0, 102, 51));
         Atras.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         Atras.setText("Atrás"); // NOI18N
         Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +104,9 @@ public class deletePropietario extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
         jLabel3.setText("Id");
 
+        BorrButton.setBackground(new java.awt.Color(174, 202, 174));
         BorrButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        BorrButton.setForeground(new java.awt.Color(0, 51, 51));
         BorrButton.setText("Borrar");
         BorrButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

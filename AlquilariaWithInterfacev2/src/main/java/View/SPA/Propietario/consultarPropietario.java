@@ -12,6 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -86,6 +90,7 @@ public class consultarPropietario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(224, 254, 224));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
+        Atras.setBackground(new java.awt.Color(0, 102, 51));
         Atras.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         Atras.setText("Atrás"); // NOI18N
         Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +109,9 @@ public class consultarPropietario extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
         jLabel3.setText("Id");
 
+        CheckButton.setBackground(new java.awt.Color(174, 202, 174));
         CheckButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        CheckButton.setForeground(new java.awt.Color(0, 51, 51));
         CheckButton.setText("Consultar");
         CheckButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,27 +196,50 @@ public class consultarPropietario extends javax.swing.JFrame {
                 isNum = false;
             }
 
-            if (isNum = false) {
+            if (isNum = true) {
                 try {
 
                     String s = idField.getText();
-
-                    ResultSet rs = OperacionesPropietario.mostrarPropietarios(1);
+                    num = Integer.parseInt(idField.getText());
+                    ResultSet rs = OperacionesPropietario.mostrarPropietarios(num);
 
                     int existe = 0;
 
+                    String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono"};
+                    DefaultTableModel model = new DefaultTableModel(columnas, 0);
+                    
                     while (rs.next()) {
-                        System.out.println("Id: " + rs.getInt("id") + " DNI: " + rs.getString("DNI"));
-                        System.out.println("Nombre: " + rs.getString("name") + "Email: " + rs.getString("email") + " Teléfono: " + rs.getString("phonenumber"));
+             
+                        //System.out.println("Id: " + rs.getInt("id") + " DNI: " + rs.getString("DNI"));
+                        //System.out.println("Nombre: " + rs.getString("name") + "Email: " + rs.getString("email") + " Teléfono: " + rs.getString("phonenumber"));
+                        int id = rs.getInt("id");
+                        String dni = rs.getString("dni");
+                        String nombre = rs.getString("name");
+                        String email = rs.getString("email");
+                        String telefono = rs.getString("phonenumber");
+
+                        Object[] fila = {id, dni, nombre, email, telefono};
+                        model.addRow(fila);
+
                         existe++;
                     }
 
                     if (existe == 0) {
                         JOptionPane.showMessageDialog(this, "No se encontraron Propietarios con ese id", "Error", JOptionPane.ERROR_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                    } else {
+                        JTable tabla = new JTable(model);
+                        JScrollPane scroll = new JScrollPane(tabla);
+
+                        // Crear ventana emergente con la tabla
+                        JDialog dialogo = new JDialog(this, "Propietarios encontrados", true);
+                        dialogo.getContentPane().add(scroll);
+                        dialogo.setSize(600, 300);
+                        dialogo.setLocationRelativeTo(this); // Centrar respecto a la ventana principal
+                        dialogo.setVisible(true);
                     }
 
                 } catch (SQLException s) {
-
+                        JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
                 }
 
             }

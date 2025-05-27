@@ -95,7 +95,7 @@ public class OperacionesPropietario {
         try {
             conn = ConnectionDB.obtainConnection();
             
-            String s = "SELECT * FROM owner WHERE (id = ? )";
+            String s = "SELECT * FROM owner WHERE id = ? ";
             PreparedStatement ps = conn.prepareStatement(s);
             ps.setInt(1, id);
 

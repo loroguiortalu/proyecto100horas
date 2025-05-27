@@ -64,6 +64,7 @@ public class MantenimientoPropietario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(224, 254, 224));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
+        Atrasbutton.setBackground(new java.awt.Color(0, 102, 51));
         Atrasbutton.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         Atrasbutton.setText("Atrás"); // NOI18N
         Atrasbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +77,9 @@ public class MantenimientoPropietario extends javax.swing.JFrame {
         jLabelChooseLanguage1.setForeground(new java.awt.Color(51, 0, 0));
         jLabelChooseLanguage1.setText("Mantenimiento Propietario");
 
+        BorrarPropietario.setBackground(new java.awt.Color(174, 202, 174));
         BorrarPropietario.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        BorrarPropietario.setForeground(new java.awt.Color(0, 51, 51));
         BorrarPropietario.setText("Borrar propietario"); // NOI18N
         BorrarPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +87,9 @@ public class MantenimientoPropietario extends javax.swing.JFrame {
             }
         });
 
+        ModificarPropietario.setBackground(new java.awt.Color(174, 202, 174));
         ModificarPropietario.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        ModificarPropietario.setForeground(new java.awt.Color(0, 51, 51));
         ModificarPropietario.setText("Modificar propietario"); // NOI18N
         ModificarPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +97,9 @@ public class MantenimientoPropietario extends javax.swing.JFrame {
             }
         });
 
+        ConnsultarPropietario.setBackground(new java.awt.Color(174, 202, 174));
         ConnsultarPropietario.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        ConnsultarPropietario.setForeground(new java.awt.Color(0, 51, 51));
         ConnsultarPropietario.setText("Consultar propietario"); // NOI18N
         ConnsultarPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +107,9 @@ public class MantenimientoPropietario extends javax.swing.JFrame {
             }
         });
 
+        AddPropietario.setBackground(new java.awt.Color(174, 202, 174));
         AddPropietario.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        AddPropietario.setForeground(new java.awt.Color(0, 51, 51));
         AddPropietario.setText("Añadir propietario"); // NOI18N
         AddPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +189,8 @@ public class MantenimientoPropietario extends javax.swing.JFrame {
 
     private void ConnsultarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnsultarPropietarioActionPerformed
         // TODO add your handling code here:
+        new consultarPropietario().setVisible(true);
+        this.dispose();
 
         
         

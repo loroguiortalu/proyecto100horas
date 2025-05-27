@@ -57,14 +57,14 @@ CREATE TABLE owner (
 -- Creation of House table 
 DROP TABLE IF EXISTS house;
 CREATE TABLE house (
-    address VARCHAR(200),
-    rent DECIMAL(10,2),
-    surface INT,
-    description VARCHAR(1000),
-    allowsPets BOOLEAN,
-    code VARCHAR(50) PRIMARY KEY,
-    housetyp INT,
-    id_owner INT,
+    address VARCHAR(200) NOT NULL,
+    rent INT NOT NULL,
+    surface INT NOT NULL,
+    description VARCHAR(1000) NOT NULL DEFAULT 'sin descripcion',
+    allowsPets BOOLEAN NOT NULL,
+    code VARCHAR(50) PRIMARY KEY NOT NULL,
+    housetyp INT NOT NULL,
+    id_owner INT NOT NULL,
     FOREIGN KEY fk_idowner (id_owner) REFERENCES owner(id),
     FOREIGN KEY fk_houset (housetyp) REFERENCES housetype(id)
 );
@@ -78,7 +78,7 @@ CREATE TABLE tenant (
     name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     phonenumber VARCHAR(50) NOT NULL,
-    haspets BOOLEAN,
+    haspets BOOLEAN NOT NULL,
     id INT AUTO_INCREMENT PRIMARY KEY
 );
 
@@ -87,12 +87,12 @@ CREATE TABLE tenant (
 -- Creation of Contract table, wich in theory it is not an entity, therefore, primary key is not needed
 DROP TABLE IF EXISTS contract;
 CREATE TABLE contract (
-    initdate DATE,
-    enddate DATE,
-    price DECIMAL(10,2),
-    status INT,
-    code_house VARCHAR(50),
-    id_tenant INT,
+    initdate DATE NOT NULL,
+    enddate DATE NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    status INT NOT NULL,
+    code_house VARCHAR(50) NOT NULL,
+    id_tenant INT NOT NULL,
     PRIMARY KEY (code_house, id_tenant),
     FOREIGN KEY fk_contractstatus (status) REFERENCES contractstatus(id),
     FOREIGN KEY fk_codehouse (code_house) REFERENCES house(code),
