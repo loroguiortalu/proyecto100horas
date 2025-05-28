@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package View.SPA.Propietario;
+package View.SPA.Vivienda;
 
 import View.SPA.*;
 import View.*;
 import javax.swing.JOptionPane;
-import Model.SPA.OperacionesPropietario;
+import Model.SPA.OperacionesVivienda;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,14 +16,14 @@ import java.util.logging.Logger;
  *
  * @author Loro
  */
-public class AddPropietario extends javax.swing.JFrame {
+public class AddVivienda extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AddPropietario.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AddVivienda.class.getName());
 
     /**
      * Creates new form Spanish
      */
-    public AddPropietario() {
+    public AddVivienda() {
         initComponents();
         setLocationRelativeTo(null);//center in the screen
         
@@ -48,14 +48,21 @@ public class AddPropietario extends javax.swing.JFrame {
         Atras = new javax.swing.JButton();
         jLabelChooseLanguage1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        DniField = new javax.swing.JTextField();
-        NameField = new javax.swing.JTextField();
+        adressField = new javax.swing.JTextField();
+        rentField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        phoneField = new javax.swing.JTextField();
+        m2Field = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        emailField = new javax.swing.JTextField();
+        idField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         AddButton = new javax.swing.JButton();
+        descriptionField1 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        checkByIdButton = new javax.swing.JButton();
+        codeField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -88,10 +95,10 @@ public class AddPropietario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(224, 254, 224));
+        jPanel1.setBackground(new java.awt.Color(224, 208, 252));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
-        Atras.setBackground(new java.awt.Color(0, 102, 51));
+        Atras.setBackground(new java.awt.Color(137, 111, 181));
         Atras.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         Atras.setText("Atrás"); // NOI18N
         Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -102,35 +109,35 @@ public class AddPropietario extends javax.swing.JFrame {
 
         jLabelChooseLanguage1.setFont(new java.awt.Font("Futura", 0, 48)); // NOI18N
         jLabelChooseLanguage1.setForeground(new java.awt.Color(51, 0, 0));
-        jLabelChooseLanguage1.setText("Añadir Propietario");
+        jLabelChooseLanguage1.setText("Añadir Vivienda");
 
-        jLabel2.setFont(new java.awt.Font("Caladea", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Caladea", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel2.setText("DNI");
+        jLabel2.setText("Dirección");
 
-        DniField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        adressField.setFont(new java.awt.Font("Caladea", 0, 18)); // NOI18N
 
-        NameField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        rentField.setFont(new java.awt.Font("Caladea", 0, 18)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Caladea", 0, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Caladea", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel3.setText("Nombre");
+        jLabel3.setText("Precio Alquiler Mensual");
 
-        phoneField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        m2Field.setFont(new java.awt.Font("Caladea", 0, 18)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Caladea", 0, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Caladea", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel5.setText("Teléfono");
+        jLabel5.setText("m²");
 
-        emailField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        idField.setFont(new java.awt.Font("Caladea", 0, 18)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Caladea", 0, 36)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Caladea", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel7.setText("Email");
+        jLabel7.setText("Descripción");
 
-        AddButton.setBackground(new java.awt.Color(174, 202, 174));
+        AddButton.setBackground(new java.awt.Color(203, 176, 249));
         AddButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-        AddButton.setForeground(new java.awt.Color(0, 51, 51));
+        AddButton.setForeground(new java.awt.Color(61, 52, 76));
         AddButton.setText("Añadir");
         AddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,65 +145,134 @@ public class AddPropietario extends javax.swing.JFrame {
             }
         });
 
+        descriptionField1.setFont(new java.awt.Font("Caladea", 0, 18)); // NOI18N
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Permite Mascotas", "No permite mascotas" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Caladea", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel8.setText("ID Propietario");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Apartamento", "Ático" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
+        checkByIdButton.setBackground(new java.awt.Color(203, 176, 249));
+        checkByIdButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        checkByIdButton.setForeground(new java.awt.Color(61, 52, 76));
+        checkByIdButton.setText("Consultar  ID Propietario");
+        checkByIdButton.setActionCommand("Consultar  ID Propietario");
+        checkByIdButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkByIdButtonActionPerformed(evt);
+            }
+        });
+
+        codeField.setFont(new java.awt.Font("Caladea", 0, 18)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Caladea", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel9.setText("Código");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(199, 199, 199))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(DniField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(131, 131, 131))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(222, 222, 222))))
+                                .addComponent(m2Field, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(descriptionField1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelChooseLanguage1)
+                                    .addComponent(adressField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(77, 77, 77)
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(rentField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(121, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(checkByIdButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DniField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabelChooseLanguage1)
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adressField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rentField, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(m2Field, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descriptionField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(64, 64, 64)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
                 .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkByIdButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -217,7 +293,7 @@ public class AddPropietario extends javax.swing.JFrame {
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         // TODO add your handling code here:
         // botón atrás
-        new MantenimientoPropietario().setVisible(true);
+        new MantenimientoVivienda().setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_AtrasActionPerformed
@@ -228,11 +304,11 @@ public class AddPropietario extends javax.swing.JFrame {
 
         try {
 
-            if (DniField.getText().isEmpty() || NameField.getText().isEmpty() || phoneField.getText().isEmpty() || emailField.getText().isEmpty()) {
+            if (adressField.getText().isEmpty() || rentField.getText().isEmpty() || m2Field.getText().isEmpty() || idField.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Rellene todos los campos", "Error", JOptionPane.ERROR_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
                 return;
             } else {
-                boo = OperacionesPropietario.insertPropietario(DniField.getText(), NameField.getText(), phoneField.getText(), emailField.getText());
+                boo = OperacionesVivienda.insertVivienda(adressField.getText(), rentField.getText(), m2Field.getText(), idField.getText());
             }
 
         } catch (SQLException ex) {
@@ -243,16 +319,99 @@ public class AddPropietario extends javax.swing.JFrame {
 
         if (boo) {
             JOptionPane.showMessageDialog(this, "El propietario se ha introducido correctamente");
-            DniField.setText("");
-            NameField.setText("");
-            phoneField.setText("");
-            emailField.setText("");
+            adressField.setText("");
+            rentField.setText("");
+            m2Field.setText("");
+            idField.setText("");
         } else {
             JOptionPane.showMessageDialog(this, "Error al insertar el propietario", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
 
     }//GEN-LAST:event_AddButtonActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void checkByIdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkByIdButtonActionPerformed
+        // TODO add your handling code here:
+
+        boolean isNum = false;
+        int num = 0;
+
+        try {
+
+            if (idField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Information", JOptionPane.ERROR_MESSAGE al final cambia el icono a "I"
+            } else {
+
+                String s = idField.getText();
+                Integer.parseInt(s);
+                isNum = true;
+
+                if (isNum = true) {
+                    try {
+
+                        String sb = idField.getText();
+                        num = Integer.parseInt(idField.getText());
+                        ResultSet rs = OperacionesPropietario.mostrarPropietarios(num);
+
+                        int existe = 0;
+
+                        String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono"};
+                        DefaultTableModel model = new DefaultTableModel(columnas, 0);
+
+                        while (rs.next()) {
+
+                            //System.out.println("Id: " + rs.getInt("id") + " DNI: " + rs.getString("DNI"));
+                            //System.out.println("Nombre: " + rs.getString("name") + "Email: " + rs.getString("email") + " Teléfono: " + rs.getString("phonenumber"));
+                            int id = rs.getInt("id");
+                            String dni = rs.getString("dni");
+                            String nombre = rs.getString("name");
+                            String email = rs.getString("email");
+                            String telefono = rs.getString("phonenumber");
+
+                            Object[] fila = {id, dni, nombre, email, telefono};
+                            model.addRow(fila);
+
+                            existe++;
+                        }
+
+                        if (existe == 0) {
+                            JOptionPane.showMessageDialog(this, "No se encontraron Propietarios con ese id", "Error", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            JTable tabla = new JTable(model);
+                            JScrollPane scroll = new JScrollPane(tabla);
+
+                            // Crear ventana emergente con la tabla
+                            JDialog dialogo = new JDialog(this, "Propietarios encontrados", true);
+                            dialogo.getContentPane().add(scroll);
+                            dialogo.setSize(600, 300);
+                            dialogo.setLocationRelativeTo(this); // Centrar respecto a la ventana principal
+                            dialogo.setVisible(true);
+                        }
+
+                    } catch (SQLException sb) {
+                        JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                }else{
+                    JOptionPane.showMessageDialog(this, "Rellene el campo id con un número positivo", "Error", JOptionPane.ERROR_MESSAGE);
+
+                }
+
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Rellene el campo id con un número positivo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_checkByIdButtonActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,27 +435,34 @@ public class AddPropietario extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new AddPropietario().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new AddVivienda().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
     private javax.swing.JButton Atras;
-    private javax.swing.JTextField DniField;
     private javax.swing.JTextField DniField2;
     private javax.swing.JTextField DniField4;
-    private javax.swing.JTextField NameField;
-    private javax.swing.JTextField emailField;
+    private javax.swing.JTextField adressField;
+    private javax.swing.JButton checkByIdButton;
+    private javax.swing.JTextField codeField;
+    private javax.swing.JTextField descriptionField1;
+    private javax.swing.JTextField idField;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelChooseLanguage;
     private javax.swing.JLabel jLabelChooseLanguage1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField phoneField;
+    private javax.swing.JTextField m2Field;
+    private javax.swing.JTextField rentField;
     // End of variables declaration//GEN-END:variables
 }

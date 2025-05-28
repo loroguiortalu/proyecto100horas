@@ -5,6 +5,8 @@
 package View.SPA;
 
 import View.*;
+import View.SPA.Vivienda.*;
+import java.sql.ResultSet;
 
 /**
  *
@@ -37,10 +39,10 @@ public class MantenimientoVivienda extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabelChooseLanguage1 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        BV = new javax.swing.JButton();
+        MV = new javax.swing.JButton();
+        CV = new javax.swing.JButton();
+        AV = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -62,6 +64,7 @@ public class MantenimientoVivienda extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(224, 208, 252));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
+        jButton1.setBackground(new java.awt.Color(137, 111, 181));
         jButton1.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         jButton1.setText("Atrás"); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -74,35 +77,43 @@ public class MantenimientoVivienda extends javax.swing.JFrame {
         jLabelChooseLanguage1.setForeground(new java.awt.Color(51, 0, 0));
         jLabelChooseLanguage1.setText("Mantenimiento Vivienda");
 
-        jButton8.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        jButton8.setText("Borrar vivienda"); // NOI18N
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        BV.setBackground(new java.awt.Color(203, 176, 249));
+        BV.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        BV.setForeground(new java.awt.Color(61, 52, 76));
+        BV.setText("Borrar vivienda"); // NOI18N
+        BV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                BVActionPerformed(evt);
             }
         });
 
-        jButton9.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        jButton9.setText("Modificar vivienda"); // NOI18N
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        MV.setBackground(new java.awt.Color(203, 176, 249));
+        MV.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        MV.setForeground(new java.awt.Color(61, 52, 76));
+        MV.setText("Modificar vivienda"); // NOI18N
+        MV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                MVActionPerformed(evt);
             }
         });
 
-        jButton10.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        jButton10.setText("Consultar vivienda"); // NOI18N
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        CV.setBackground(new java.awt.Color(203, 176, 249));
+        CV.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        CV.setForeground(new java.awt.Color(61, 52, 76));
+        CV.setText("Consultar vivienda"); // NOI18N
+        CV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                CVActionPerformed(evt);
             }
         });
 
-        jButton11.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        jButton11.setText("Añadir vivienda"); // NOI18N
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        AV.setBackground(new java.awt.Color(203, 176, 249));
+        AV.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        AV.setForeground(new java.awt.Color(61, 52, 76));
+        AV.setText("Añadir vivienda"); // NOI18N
+        AV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                AVActionPerformed(evt);
             }
         });
 
@@ -117,28 +128,29 @@ public class MantenimientoVivienda extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(102, 102, 102)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE))
+                    .addComponent(BV, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
+                    .addComponent(MV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelChooseLanguage1)
-                .addGap(173, 173, 173))
+                .addGap(237, 237, 237))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(AV, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BV, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CV, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MV, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -166,21 +178,24 @@ public class MantenimientoVivienda extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void BVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_BVActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void MVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MVActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_MVActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void CVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CVActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_CVActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void AVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AVActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+        new AddVivienda().setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_AVActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,11 +223,11 @@ public class MantenimientoVivienda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AV;
+    private javax.swing.JButton BV;
+    private javax.swing.JButton CV;
+    private javax.swing.JButton MV;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabelChooseLanguage;
     private javax.swing.JLabel jLabelChooseLanguage1;
     private javax.swing.JPanel jPanel1;

@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package View.SPA.Propietario;
+package View.SPA.Vivienda;
 
+import View.SPA.Propietario.*;
 import View.SPA.*;
 import View.*;
 import javax.swing.JOptionPane;
@@ -21,14 +22,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Loro
  */
-public class consultarPropietario extends javax.swing.JFrame {
+public class consultarVivienda extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(consultarPropietario.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(consultarVivienda.class.getName());
 
     /**
      * Creates new form Spanish
      */
-    public consultarPropietario() {
+    public consultarVivienda() {
         initComponents();
         setLocationRelativeTo(null);//center in the screen
         
@@ -280,7 +281,7 @@ public class consultarPropietario extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new consultarPropietario().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new consultarVivienda().setVisible(true));
     }
     
     

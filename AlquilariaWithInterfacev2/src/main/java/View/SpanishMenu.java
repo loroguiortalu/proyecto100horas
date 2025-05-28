@@ -38,12 +38,14 @@ public class SpanishMenu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jMenu1 = new javax.swing.JMenu();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jLabel2 = new javax.swing.JLabel();
         PanelMenu = new javax.swing.JPanel();
         Salir = new javax.swing.JButton();
         Contratos = new javax.swing.JButton();
         Inquilinos = new javax.swing.JButton();
         Viviendas = new javax.swing.JButton();
         Propietario = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -61,11 +63,16 @@ public class SpanishMenu extends javax.swing.JFrame {
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
+        jLabel2.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel2.setText("Alquilaria s.l. All rights reserved ©");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        PanelMenu.setBackground(new java.awt.Color(255, 255, 226));
+        PanelMenu.setBackground(new java.awt.Color(253, 253, 201));
         PanelMenu.setPreferredSize(new java.awt.Dimension(1024, 720));
+        PanelMenu.setRequestFocusEnabled(false);
 
+        Salir.setBackground(new java.awt.Color(123, 123, 36));
         Salir.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         Salir.setText("Salir del programa"); // NOI18N
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +81,9 @@ public class SpanishMenu extends javax.swing.JFrame {
             }
         });
 
+        Contratos.setBackground(new java.awt.Color(219, 213, 141));
         Contratos.setFont(new java.awt.Font("Futura", 0, 36)); // NOI18N
+        Contratos.setForeground(new java.awt.Color(58, 55, 36));
         Contratos.setText("Mantemimiento Contratos");
         Contratos.setToolTipText("");
         Contratos.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +92,9 @@ public class SpanishMenu extends javax.swing.JFrame {
             }
         });
 
+        Inquilinos.setBackground(new java.awt.Color(219, 213, 141));
         Inquilinos.setFont(new java.awt.Font("Futura", 0, 36)); // NOI18N
+        Inquilinos.setForeground(new java.awt.Color(58, 55, 36));
         Inquilinos.setText("Mantenimiento Inquilinos");
         Inquilinos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +102,9 @@ public class SpanishMenu extends javax.swing.JFrame {
             }
         });
 
+        Viviendas.setBackground(new java.awt.Color(219, 213, 141));
         Viviendas.setFont(new java.awt.Font("Futura", 0, 36)); // NOI18N
+        Viviendas.setForeground(new java.awt.Color(58, 55, 36));
         Viviendas.setText("Mantenimiento Viviendas");
         Viviendas.setToolTipText("");
         Viviendas.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +113,9 @@ public class SpanishMenu extends javax.swing.JFrame {
             }
         });
 
+        Propietario.setBackground(new java.awt.Color(219, 213, 141));
         Propietario.setFont(new java.awt.Font("Futura", 0, 36)); // NOI18N
+        Propietario.setForeground(new java.awt.Color(58, 55, 36));
         Propietario.setText("Mantenimiento Propietario");
         Propietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,22 +123,30 @@ public class SpanishMenu extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel3.setText("Alquilaria S.L. All rights reserved ©");
+
         javax.swing.GroupLayout PanelMenuLayout = new javax.swing.GroupLayout(PanelMenu);
         PanelMenu.setLayout(PanelMenuLayout);
         PanelMenuLayout.setHorizontalGroup(
             PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenuLayout.createSequentialGroup()
-                .addContainerGap(722, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
             .addGroup(PanelMenuLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Viviendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Propietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Inquilinos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Contratos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelMenuLayout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Viviendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Propietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Inquilinos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Contratos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(PanelMenuLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(485, Short.MAX_VALUE))
         );
         PanelMenuLayout.setVerticalGroup(
             PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +161,9 @@ public class SpanishMenu extends javax.swing.JFrame {
                 .addComponent(Contratos, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                 .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addGap(1, 1, 1)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -219,6 +244,8 @@ public class SpanishMenu extends javax.swing.JFrame {
     private javax.swing.JButton Salir;
     private javax.swing.JButton Viviendas;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

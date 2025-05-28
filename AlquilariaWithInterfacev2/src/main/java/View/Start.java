@@ -40,6 +40,7 @@ public class Start extends javax.swing.JFrame {
         English = new javax.swing.JButton();
         Spanish = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -68,13 +69,15 @@ public class Start extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(java.awt.Color.white);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 226));
+        jPanel1.setBackground(new java.awt.Color(253, 253, 201));
         jPanel1.setForeground(new java.awt.Color(255, 255, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
         jLabelChooseLanguage.setFont(new java.awt.Font("Futura", 0, 48)); // NOI18N
         jLabelChooseLanguage.setForeground(new java.awt.Color(51, 0, 0));
         jLabelChooseLanguage.setText("Choose a Language");
 
+        Exit.setBackground(new java.awt.Color(123, 123, 36));
         Exit.setFont(new java.awt.Font("Futura", 1, 14)); // NOI18N
         Exit.setText("Exit"); // NOI18N
         Exit.addActionListener(new java.awt.event.ActionListener() {
@@ -83,9 +86,9 @@ public class Start extends javax.swing.JFrame {
             }
         });
 
-        English.setBackground(new java.awt.Color(204, 204, 204));
+        English.setBackground(new java.awt.Color(219, 213, 141));
         English.setFont(new java.awt.Font("Futura", 0, 18)); // NOI18N
-        English.setForeground(new java.awt.Color(0, 0, 0));
+        English.setForeground(new java.awt.Color(58, 55, 36));
         English.setText("English");
         English.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,9 +96,9 @@ public class Start extends javax.swing.JFrame {
             }
         });
 
-        Spanish.setBackground(new java.awt.Color(204, 204, 204));
+        Spanish.setBackground(new java.awt.Color(219, 213, 141));
         Spanish.setFont(new java.awt.Font("Futura", 0, 18)); // NOI18N
-        Spanish.setForeground(new java.awt.Color(0, 0, 0));
+        Spanish.setForeground(new java.awt.Color(58, 55, 36));
         Spanish.setText("Spanish");
         Spanish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,18 +106,26 @@ public class Start extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel2.setText("Alquilaria S.L. All rights reserved ©");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(258, 258, 258)
+                .addGap(283, 283, 283)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelChooseLanguage)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -122,7 +133,7 @@ public class Start extends javax.swing.JFrame {
                         .addComponent(English, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(88, 88, 88)
                         .addComponent(Spanish, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,16 +148,18 @@ public class Start extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(English, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Spanish, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(202, 202, 202)
+                .addGap(230, 230, 230)
                 .addComponent(jLabel1)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,6 +234,7 @@ public class Start extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelChooseLanguage;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
