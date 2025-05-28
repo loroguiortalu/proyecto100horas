@@ -185,6 +185,8 @@ public class MantenimientoPropietario extends javax.swing.JFrame {
 
     private void ModificarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPropietarioActionPerformed
         // TODO add your handling code here:
+        new modifyPropietario().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_ModificarPropietarioActionPerformed
 
     private void ConnsultarPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnsultarPropietarioActionPerformed

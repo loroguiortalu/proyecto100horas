@@ -182,24 +182,25 @@ public class consultarPropietario extends javax.swing.JFrame {
 
     private void CheckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckButtonActionPerformed
         // TODO add your handling code here:
-        boolean isNum;
+        boolean isNum = false;
         int num = 0;
+        
+        try {
+            
 
         if (idField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+            JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Information", JOptionPane.ERROR_MESSAGE al final cambia el icono a "I"
         } else {
+            
+            String s = idField.getText();
+            Integer.parseInt(s);
+            isNum = true;
 
-            try {
-                num = Integer.parseInt(idField.getText());
-                isNum = true;
-            } catch (NumberFormatException ex) {
-                isNum = false;
-            }
 
             if (isNum = true) {
                 try {
 
-                    String s = idField.getText();
+                    String sb = idField.getText();
                     num = Integer.parseInt(idField.getText());
                     ResultSet rs = OperacionesPropietario.mostrarPropietarios(num);
 
@@ -225,7 +226,7 @@ public class consultarPropietario extends javax.swing.JFrame {
                     }
 
                     if (existe == 0) {
-                        JOptionPane.showMessageDialog(this, "No se encontraron Propietarios con ese id", "Error", JOptionPane.ERROR_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                        JOptionPane.showMessageDialog(this, "No se encontraron Propietarios con ese id", "Error", JOptionPane.ERROR_MESSAGE);
                     } else {
                         JTable tabla = new JTable(model);
                         JScrollPane scroll = new JScrollPane(tabla);
@@ -238,13 +239,22 @@ public class consultarPropietario extends javax.swing.JFrame {
                         dialogo.setVisible(true);
                     }
 
-                } catch (SQLException s) {
-                        JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                } catch (SQLException sb) {
+                        JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
+            }else{
+                JOptionPane.showMessageDialog(this, "Rellene el campo id con un número positivo", "Error", JOptionPane.ERROR_MESSAGE);
+            
             }
 
         }
+            
+
+        } catch (NumberFormatException e) {
+           JOptionPane.showMessageDialog(this, "Rellene el campo id con un número positivo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
 
     }//GEN-LAST:event_CheckButtonActionPerformed
 
@@ -272,6 +282,10 @@ public class consultarPropietario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new consultarPropietario().setVisible(true));
     }
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;

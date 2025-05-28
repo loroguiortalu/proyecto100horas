@@ -64,25 +64,66 @@ public class OperacionesPropietario {
 
     }
 
-    public static boolean modifyPropietario(int id) throws SQLException {
+    public static boolean modifyPropietario(int id, String dni, String n, String phonenumber, String email) throws SQLException {
 
+        boolean boo = false;
 
         try {
             conn = ConnectionDB.obtainConnection();
             
-            String b = "DELETE FROM owner WHERE id = ? ";
+        String query = "";
 
-            PreparedStatement ps = conn.prepareStatement(b);
-
-            ps.setInt(1, id);
-
+        if (!dni.isEmpty() && dni != null) {// comprobando si los strings enviados se les ha dado intro simplemente, y si se ha introducido algo entonces se modifica esa parte del cliente, una por una, así puedes modificar desde solo un dato del cliente a cambiar el cliente completamente (excepto el id)
+            query = "UPDATE owner SET dni = ? WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, dni);
+            ps.setInt(2, id);
             ps.executeUpdate();
-            return true;
+            ps.close();
+            boo = true;
+        }
+        
+        if (!n.isEmpty() && n != null) {
+            query = "UPDATE owner SET name = ? WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, n);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            ps.close();
+            boo = true;
+        }        
+      
+        if (!email.isEmpty() && email != null) {
+            query = "UPDATE owner SET email = ? WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            ps.close();
+            boo = true;
+        }        
+        if (!phonenumber.isEmpty() && phonenumber != null) {
+            query = "UPDATE owner SET phonenumber = ? WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, phonenumber);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            ps.close();
+            boo = true;
+
+        }                
+            
+            
+            
+            
+            
+            
 
         } catch (Exception e) {
             return false;
-
         }
+        
+        return boo;
 
     }
     

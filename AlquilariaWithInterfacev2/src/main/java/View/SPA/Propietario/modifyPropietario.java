@@ -266,21 +266,68 @@ public class modifyPropietario extends javax.swing.JFrame {
         boolean isNum;
         int num = 0;
 
-        if (idField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
-        } else {
+        try {
 
-            try {
+            if (idField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+            } else if (DniField.getText().isEmpty() && NameField.getText().isEmpty() && phoneField.getText().isEmpty() && emailField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Rellene al menos uno de los campos DNI, Nombre, email o teléfono para modificar el propietario", "Info", JOptionPane.INFORMATION_MESSAGE);// info para que se rellenen los campos que no son id
+            } else {
+
                 num = Integer.parseInt(idField.getText());
                 isNum = true;
-            } catch (NumberFormatException ex) {
-                isNum = false;
+
+
+                if (isNum = true) {
+                    String s = idField.getText();
+                    num = Integer.parseInt(idField.getText());
+
+                    try {
+                        boolean boo = OperacionesPropietario.modifyPropietario(num, DniField.getText(), NameField.getText(), phoneField.getText(), emailField.getText());
+
+                        if (boo) {
+                            JOptionPane.showMessageDialog(this, "El propietario se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Por algún motivo el propietario no se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                        }
+
+                    } catch (SQLException ex) {
+                        Logger.getLogger(modifyPropietario.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                }
+
             }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Rellene el campo id con un número positivo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_CheckButtonActionPerformed
+
+    private void checkByIdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkByIdButtonActionPerformed
+        // TODO add your handling code here:
+        
+        boolean isNum = false;
+        int num = 0;
+        
+        try {
+            
+
+        if (idField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Information", JOptionPane.ERROR_MESSAGE al final cambia el icono a "I"
+        } else {
+            
+            String s = idField.getText();
+            Integer.parseInt(s);
+            isNum = true;
+
 
             if (isNum = true) {
                 try {
 
-                    String s = idField.getText();
+                    String sb = idField.getText();
                     num = Integer.parseInt(idField.getText());
                     ResultSet rs = OperacionesPropietario.mostrarPropietarios(num);
 
@@ -306,7 +353,7 @@ public class modifyPropietario extends javax.swing.JFrame {
                     }
 
                     if (existe == 0) {
-                        JOptionPane.showMessageDialog(this, "No se encontraron Propietarios con ese id", "Error", JOptionPane.ERROR_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                        JOptionPane.showMessageDialog(this, "No se encontraron Propietarios con ese id", "Error", JOptionPane.ERROR_MESSAGE);
                     } else {
                         JTable tabla = new JTable(model);
                         JScrollPane scroll = new JScrollPane(tabla);
@@ -319,18 +366,23 @@ public class modifyPropietario extends javax.swing.JFrame {
                         dialogo.setVisible(true);
                     }
 
-                } catch (SQLException s) {
-                        JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                } catch (SQLException sb) {
+                        JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
+            }else{
+                JOptionPane.showMessageDialog(this, "Rellene el campo id con un número positivo", "Error", JOptionPane.ERROR_MESSAGE);
+            
             }
 
         }
+            
 
-    }//GEN-LAST:event_CheckButtonActionPerformed
+        } catch (NumberFormatException e) {
+           JOptionPane.showMessageDialog(this, "Rellene el campo id con un número positivo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
 
-    private void checkByIdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkByIdButtonActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_checkByIdButtonActionPerformed
 
     /**
