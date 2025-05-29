@@ -2,28 +2,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package View.SPA.Propietario;
+package View.SPA.Vivienda;
 
+import Model.OperacionesHouse;
+import View.SPA.Propietario.*;
 import View.SPA.*;
 import View.*;
 import javax.swing.JOptionPane;
-import Model.SPA.OperacionesPropietario;
+import Model.OperacionesOwner;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Loro
  */
-public class deletePropietario extends javax.swing.JFrame {
+public class deleteVivienda extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(deletePropietario.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(deleteVivienda.class.getName());
 
     /**
      * Creates new form Spanish
      */
-    public deletePropietario() {
+    public deleteVivienda() {
         initComponents();
         setLocationRelativeTo(null);//center in the screen
         
@@ -50,6 +57,7 @@ public class deletePropietario extends javax.swing.JFrame {
         idField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         BorrButton = new javax.swing.JButton();
+        CheckAllOwner = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -82,10 +90,10 @@ public class deletePropietario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(224, 254, 224));
+        jPanel1.setBackground(new java.awt.Color(224, 208, 252));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
-        Atras.setBackground(new java.awt.Color(0, 102, 51));
+        Atras.setBackground(new java.awt.Color(137, 111, 181));
         Atras.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         Atras.setText("Atrás"); // NOI18N
         Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -96,17 +104,17 @@ public class deletePropietario extends javax.swing.JFrame {
 
         jLabelChooseLanguage1.setFont(new java.awt.Font("Futura", 0, 48)); // NOI18N
         jLabelChooseLanguage1.setForeground(new java.awt.Color(51, 0, 0));
-        jLabelChooseLanguage1.setText("Borrar Propietario");
+        jLabelChooseLanguage1.setText("Borrar Vivienda");
 
         idField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Caladea", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel3.setText("Id");
+        jLabel3.setText("Código");
 
-        BorrButton.setBackground(new java.awt.Color(174, 202, 174));
+        BorrButton.setBackground(new java.awt.Color(203, 176, 249));
         BorrButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-        BorrButton.setForeground(new java.awt.Color(0, 51, 51));
+        BorrButton.setForeground(new java.awt.Color(61, 52, 76));
         BorrButton.setText("Borrar");
         BorrButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,42 +122,57 @@ public class deletePropietario extends javax.swing.JFrame {
             }
         });
 
+        CheckAllOwner.setBackground(new java.awt.Color(203, 176, 249));
+        CheckAllOwner.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        CheckAllOwner.setForeground(new java.awt.Color(61, 52, 76));
+        CheckAllOwner.setText("Consultar Vivienda");
+        CheckAllOwner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckAllOwnerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(181, 181, 181)
+                        .addComponent(jLabelChooseLanguage1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(161, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BorrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(219, 219, 219))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(CheckAllOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(163, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(BorrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(214, 214, 214))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelChooseLanguage1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(131, 131, 131))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108)
+                .addGap(110, 110, 110)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(77, 77, 77)
+                .addGap(82, 82, 82)
                 .addComponent(BorrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
-                .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CheckAllOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -182,42 +205,76 @@ public class deletePropietario extends javax.swing.JFrame {
         int num = 0;
 
         if (idField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+            JOptionPane.showMessageDialog(this, "Rellene el campo con un código", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
         } else {
-
             try {
-                num = Integer.parseInt(idField.getText());
-                isNum = true;
 
-            } catch (NumberFormatException ex) {
-                isNum = false;
+                boo = OperacionesOwner.borrPropietario(num);
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al borrar la vivienda", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
-            if (isNum) {
+            if (boo) {
+                JOptionPane.showMessageDialog(this, "La vivienda se ha borrado satisfactoriamente", "Info", JOptionPane.INFORMATION_MESSAGE);
+                idField.setText("");
 
-                try {
-
-                    boo = OperacionesPropietario.borrPropietario(num);
-
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(this, "Error al borrar el propietario", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-
-                if (boo) {
-                    JOptionPane.showMessageDialog(this, "El propietario se ha borrado satisfactoriamente","Info", JOptionPane.INFORMATION_MESSAGE);
-                    idField.setText("");
-
-                } else {
-                    JOptionPane.showMessageDialog(this, "Error al borrar al propietario", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-
-            }else{
-                JOptionPane.showMessageDialog(this, "Error, el campo id debe de ser únicamente un número", "Error", JOptionPane.ERROR_MESSAGE);
-            
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al borrar la vivienda", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
     }//GEN-LAST:event_BorrButtonActionPerformed
+
+    private void CheckAllOwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckAllOwnerActionPerformed
+        // TODO add your handling code here:
+
+        try {
+
+            ResultSet rs = OperacionesHouse.showAllHouses();
+
+            int existe = 0;
+
+            String[] columnas = {"DIRECCIÓN", "PRECIO ALQUILER", "M2", "DESCRIPCIÓN", "PERMITE MASCOTAS", "CÓDIGO", "TIPO DE CASA", "ID OWNER"};
+            DefaultTableModel model = new DefaultTableModel(columnas, 0);
+
+            while (rs.next()) {
+
+                String address = rs.getString("address");
+                int rent = rs.getInt("rent");
+                int surface = rs.getInt("surface");
+                String description = rs.getString("description");
+                boolean allowsPets = rs.getBoolean("allowsPets");
+                String code = rs.getString("code");
+                int housetyp = rs.getInt("housetyp");
+                int idowner = rs.getInt("id_owner");
+
+                String housetype = OperacionesHouse.gettipoviviendaSpanish(housetyp);// this way se can obtain the string of the type of house, because the translations are in a mysql table
+
+                Object[] fila = {address, rent, surface, description, allowsPets, code, housetype, idowner};
+                model.addRow(fila);
+
+                existe++;
+            }
+
+            if (existe == 0) {
+                JOptionPane.showMessageDialog(this, "No se encontraron Casas con esa id", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JTable tabla = new JTable(model);
+                JScrollPane scroll = new JScrollPane(tabla);
+
+                // Crear ventana emergente con la tabla
+                JDialog dialogo = new JDialog(this, "Casas encontradas", true);
+                dialogo.getContentPane().add(scroll);
+                dialogo.setSize(600, 300);
+                dialogo.setLocationRelativeTo(this); // Centrar respecto a la ventana principal
+                dialogo.setVisible(true);
+            }
+
+        } catch (SQLException sb) {
+            JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+        }     
+    }//GEN-LAST:event_CheckAllOwnerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,12 +298,13 @@ public class deletePropietario extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new deletePropietario().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new deleteVivienda().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
     private javax.swing.JButton BorrButton;
+    private javax.swing.JButton CheckAllOwner;
     private javax.swing.JTextField DniField2;
     private javax.swing.JTextField DniField4;
     private javax.swing.JTextField idField;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model.SPA;
+package Model;
 
 import Controller.ConnectionDB;
 import java.sql.Connection;
@@ -14,27 +14,37 @@ import java.sql.SQLException;
  *
  * @author Loro
  */
-public class OperacionesVivienda {
+public class OperacionesHouse {
+
+    private static Connection conn = null;
+
+    public static void setConn(Connection conn) {
+        OperacionesHouse.conn = conn;
+    }
+
     
     
-        private static Connection conn = null;
-
-    public static boolean insertVivienda(String dni, String n, String t, String email) throws SQLException {
-
+    public static boolean insertVivienda(String address, int rent, int surface, String description,
+        boolean allowsPets, String code, int housetyp, int id_owner) throws SQLException {
 
         try {
             conn = ConnectionDB.obtainConnection();
-            
-            String b = "INSERT INTO owner (dni, name, phonenumber, email) VALUES (?, ?, ?, ?)";
+
+            String b = "INSERT INTO house (address, rent, surface, description, allowsPets, code, housetyp, id_owner) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement ps = conn.prepareStatement(b);
 
-            ps.setString(1, dni);
-            ps.setString(2, n);
-            ps.setString(3, t);
-            ps.setString(4, email);
+            ps.setString(1, address);
+            ps.setInt(2, rent);
+            ps.setInt(3, surface);
+            ps.setString(4, description);
+            ps.setBoolean(5, allowsPets);
+            ps.setString(6, code);
+            ps.setInt(7, housetyp);
+            ps.setInt(8, id_owner);
 
             ps.executeUpdate();
+            conn.close();
             return true;
 
         } catch (Exception e) {
@@ -44,21 +54,22 @@ public class OperacionesVivienda {
 
     }
 
-    public static boolean borrPropietario(int id) throws SQLException {
-
+    public static boolean borrVivienda(String code) throws SQLException {
 
         try {
             conn = ConnectionDB.obtainConnection();
-            String b = "DELETE FROM owner WHERE id = ? ";
+            String b = "DELETE FROM house WHERE code = ? ";
 
             PreparedStatement ps = conn.prepareStatement(b);
 
-            ps.setInt(1, id);
+            ps.setString(1, code);
 
             ps.executeUpdate();
+            conn.close();
             return true;
 
         } catch (Exception e) {
+            conn.close();
             return false;
 
         }
@@ -71,88 +82,129 @@ public class OperacionesVivienda {
 
         try {
             conn = ConnectionDB.obtainConnection();
-            
-        String query = "";
 
-        if (!dni.isEmpty() && dni != null) {// comprobando si los strings enviados se les ha dado intro simplemente, y si se ha introducido algo entonces se modifica esa parte del cliente, una por una, así puedes modificar desde solo un dato del cliente a cambiar el cliente completamente (excepto el id)
-            query = "UPDATE owner SET dni = ? WHERE id = ?";
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, dni);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-            ps.close();
-            boo = true;
-        }
-        
-        if (!n.isEmpty() && n != null) {
-            query = "UPDATE owner SET name = ? WHERE id = ?";
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, n);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-            ps.close();
-            boo = true;
-        }        
-      
-        if (!email.isEmpty() && email != null) {
-            query = "UPDATE owner SET email = ? WHERE id = ?";
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, email);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-            ps.close();
-            boo = true;
-        }        
-        if (!phonenumber.isEmpty() && phonenumber != null) {
-            query = "UPDATE owner SET phonenumber = ? WHERE id = ?";
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, phonenumber);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-            ps.close();
-            boo = true;
+            String query = "";
 
-        }                
+            if (!dni.isEmpty() && dni != null) {// comprobando si los strings enviados se les ha dado intro simplemente, y si se ha introducido algo entonces se modifica esa parte del cliente, una por una, así puedes modificar desde solo un dato del cliente a cambiar el cliente completamente (excepto el id)
+                query = "UPDATE owner SET dni = ? WHERE id = ?";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setString(1, dni);
+                ps.setInt(2, id);
+                ps.executeUpdate();
+                ps.close();
+                boo = true;
+            }
+
+            if (!n.isEmpty() && n != null) {
+                query = "UPDATE owner SET name = ? WHERE id = ?";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setString(1, n);
+                ps.setInt(2, id);
+                ps.executeUpdate();
+                ps.close();
+                boo = true;
+            }
+
+            if (!email.isEmpty() && email != null) {
+                query = "UPDATE owner SET email = ? WHERE id = ?";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setString(1, email);
+                ps.setInt(2, id);
+                ps.executeUpdate();
+                ps.close();
+                boo = true;
+            }
+            if (!phonenumber.isEmpty() && phonenumber != null) {
+                query = "UPDATE owner SET phonenumber = ? WHERE id = ?";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setString(1, phonenumber);
+                ps.setInt(2, id);
+                ps.executeUpdate();
+                ps.close();
+                boo = true;
+
+            }
             
-            
-            
-            
-            
-            
+            conn.close();
 
         } catch (Exception e) {
+            conn.close();
             return false;
         }
-        
+
         return boo;
 
     }
-    
-    
-    
-    public static ResultSet mostrarPropietarios(int id) throws SQLException {
-    
+
+    public static ResultSet showHouse(String code) throws SQLException {
+
         ResultSet rs = null;
-        
+
         try {
             conn = ConnectionDB.obtainConnection();
-            
-            String s = "SELECT * FROM owner WHERE id = ? ";
+
+            String s = "SELECT * FROM house WHERE code = ? ";
             PreparedStatement ps = conn.prepareStatement(s);
-            ps.setInt(1, id);
+            ps.setString(1, code);
 
             rs = ps.executeQuery();
-            
+            conn.close();
             return rs;
-            
+
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+            conn.close();
             return rs;
-        
-        }      
+
+        }
     }
     
-    
-    
-    
+        public static ResultSet showAllHouses() throws SQLException {
+
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectionDB.obtainConnection();
+
+            String s = "SELECT * FROM house ";
+            PreparedStatement ps = conn.prepareStatement(s);
+
+            rs = ps.executeQuery();
+            conn.close();
+            return rs;
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            conn.close();
+            return rs;
+
+        }
+    }
+
+    public static String gettipoviviendaSpanish(int id) throws SQLException {
+
+        ResultSet rs = null;
+        String sb;
+
+        try {
+            conn = ConnectionDB.obtainConnection();
+
+            String s = "SELECT wspanish FROM housetype WHERE id = ? ";
+            PreparedStatement ps = conn.prepareStatement(s);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            sb = rs.getString("wspanish");
+            conn.close();
+            return sb;
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            conn.close();
+            return "error";
+
+        }
+    }
+
 }
+
+

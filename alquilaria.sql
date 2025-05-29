@@ -61,7 +61,7 @@ CREATE TABLE house (
     address VARCHAR(200) NOT NULL,
     rent INT NOT NULL,
     surface INT NOT NULL,
-    description VARCHAR(1000) NOT NULL DEFAULT 'sin descripcion',
+    description VARCHAR(1000) NOT NULL DEFAULT 'no description',
     allowsPets BOOLEAN NOT NULL,
     code VARCHAR(50) PRIMARY KEY NOT NULL,
     housetyp INT NOT NULL,

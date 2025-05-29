@@ -113,7 +113,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Component id="CheckAllOwner" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="Atras" min="-2" pref="211" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               </Group>
@@ -151,8 +153,11 @@
                   </Group>
                   <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   <Component id="BorrButton" min="-2" pref="65" max="-2" attributes="0"/>
-                  <EmptySpace pref="210" max="32767" attributes="0"/>
-                  <Component id="Atras" min="-2" pref="64" max="-2" attributes="0"/>
+                  <EmptySpace pref="209" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="Atras" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
+                      <Component id="CheckAllOwner" alignment="3" min="-2" pref="65" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -217,6 +222,23 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BorrButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="CheckAllOwner">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ae" green="ca" red="ae" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Caladea" size="24" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Consultar Propietarios"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CheckAllOwnerActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model.SPA;
+package Model;
 
 import Controller.ConnectionDB;
 import java.sql.Connection;
@@ -14,7 +14,7 @@ import java.sql.ResultSet;
  *
  * @author Loro
  */
-public class OperacionesPropietario {
+public class OperacionesOwner {
 
     private static Connection conn = null;
 
@@ -129,7 +129,7 @@ public class OperacionesPropietario {
     
     
     
-    public static ResultSet mostrarPropietarios(int id) throws SQLException {
+    public static ResultSet showOwner(int id) throws SQLException {
     
         ResultSet rs = null;
         
@@ -139,6 +139,27 @@ public class OperacionesPropietario {
             String s = "SELECT * FROM owner WHERE id = ? ";
             PreparedStatement ps = conn.prepareStatement(s);
             ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+            
+            return rs;
+            
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return rs;
+        
+        }      
+    }
+    
+        public static ResultSet showAllOwners() throws SQLException {
+    
+        ResultSet rs = null;
+        
+        try {
+            conn = ConnectionDB.obtainConnection();
+            
+            String s = "SELECT * FROM owner ";
+            PreparedStatement ps = conn.prepareStatement(s);
 
             rs = ps.executeQuery();
             

@@ -4,11 +4,12 @@
  */
 package View.SPA.Vivienda;
 
+import Model.OperacionesHouse;
 import View.SPA.Propietario.*;
 import View.SPA.*;
 import View.*;
 import javax.swing.JOptionPane;
-import Model.SPA.OperacionesPropietario;
+import Model.OperacionesOwner;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -53,9 +54,10 @@ public class consultarVivienda extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Atras = new javax.swing.JButton();
         jLabelChooseLanguage1 = new javax.swing.JLabel();
-        idField = new javax.swing.JTextField();
+        codeField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         CheckButton = new javax.swing.JButton();
+        CheckAllButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -88,10 +90,10 @@ public class consultarVivienda extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(224, 254, 224));
+        jPanel1.setBackground(new java.awt.Color(224, 208, 252));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
-        Atras.setBackground(new java.awt.Color(0, 102, 51));
+        Atras.setBackground(new java.awt.Color(137, 111, 181));
         Atras.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         Atras.setText("Atrás"); // NOI18N
         Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -102,21 +104,31 @@ public class consultarVivienda extends javax.swing.JFrame {
 
         jLabelChooseLanguage1.setFont(new java.awt.Font("Futura", 0, 48)); // NOI18N
         jLabelChooseLanguage1.setForeground(new java.awt.Color(51, 0, 0));
-        jLabelChooseLanguage1.setText("Consultar Propietario");
+        jLabelChooseLanguage1.setText("Consultar Vivienda");
 
-        idField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        codeField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Caladea", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel3.setText("Id");
+        jLabel3.setText("Código");
 
-        CheckButton.setBackground(new java.awt.Color(174, 202, 174));
+        CheckButton.setBackground(new java.awt.Color(203, 176, 249));
         CheckButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-        CheckButton.setForeground(new java.awt.Color(0, 51, 51));
+        CheckButton.setForeground(new java.awt.Color(61, 52, 76));
         CheckButton.setText("Consultar");
         CheckButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CheckButtonActionPerformed(evt);
+            }
+        });
+
+        CheckAllButton.setBackground(new java.awt.Color(203, 176, 249));
+        CheckAllButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        CheckAllButton.setForeground(new java.awt.Color(61, 52, 76));
+        CheckAllButton.setText("Consultar Todas");
+        CheckAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckAllButtonActionPerformed(evt);
             }
         });
 
@@ -125,37 +137,40 @@ public class consultarVivienda extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(CheckAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
                 .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(CheckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(214, 214, 214))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelChooseLanguage1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(131, 131, 131))))
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CheckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(217, 217, 217))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(31, 31, 31)
                 .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108)
+                .addGap(113, 113, 113)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(77, 77, 77)
+                .addGap(84, 84, 84)
                 .addComponent(CheckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
-                .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CheckAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -176,64 +191,56 @@ public class consultarVivienda extends javax.swing.JFrame {
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         // TODO add your handling code here:
         // botón atrás
-        new MantenimientoPropietario().setVisible(true); 
+        new MantenimientoVivienda().setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void CheckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckButtonActionPerformed
         // TODO add your handling code here:
-        boolean isNum = false;
-        int num = 0;
-        
         try {
-            
 
-        if (idField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Information", JOptionPane.ERROR_MESSAGE al final cambia el icono a "I"
-        } else {
-            
-            String s = idField.getText();
-            Integer.parseInt(s);
-            isNum = true;
+            if (codeField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Information", JOptionPane.ERROR_MESSAGE al final cambia el icono a "I"
+            } else {
 
-
-            if (isNum = true) {
                 try {
 
-                    String sb = idField.getText();
-                    num = Integer.parseInt(idField.getText());
-                    ResultSet rs = OperacionesPropietario.mostrarPropietarios(num);
+                    String s = codeField.getText();
+                    ResultSet rs = OperacionesHouse.showHouse(s);
 
                     int existe = 0;
 
-                    String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono"};
+                    String[] columnas = {"DIRECCIÓN", "PRECIO ALQUILER", "M2", "DESCRIPCIÓN", "PERMITE MASCOTAS", "CÓDIGO", "TIPO DE CASA", "ID OWNER"};
                     DefaultTableModel model = new DefaultTableModel(columnas, 0);
-                    
-                    while (rs.next()) {
-             
-                        //System.out.println("Id: " + rs.getInt("id") + " DNI: " + rs.getString("DNI"));
-                        //System.out.println("Nombre: " + rs.getString("name") + "Email: " + rs.getString("email") + " Teléfono: " + rs.getString("phonenumber"));
-                        int id = rs.getInt("id");
-                        String dni = rs.getString("dni");
-                        String nombre = rs.getString("name");
-                        String email = rs.getString("email");
-                        String telefono = rs.getString("phonenumber");
 
-                        Object[] fila = {id, dni, nombre, email, telefono};
+                    while (rs.next()) {
+
+                        String address = rs.getString("address");
+                        int rent = rs.getInt("rent");
+                        int surface = rs.getInt("surface");
+                        String description = rs.getString("description");
+                        boolean allowsPets = rs.getBoolean("allowsPets");
+                        String code = rs.getString("code");
+                        int housetyp = rs.getInt("housetyp");
+                        int idowner = rs.getInt("id_owner");
+
+                        String housetype = OperacionesHouse.gettipoviviendaSpanish(housetyp);// this way se can obtain the string of the type of house, because the translations are in a mysql table
+
+                        Object[] fila = {address, rent, surface, description, allowsPets, code, housetype, idowner};
                         model.addRow(fila);
 
                         existe++;
                     }
 
                     if (existe == 0) {
-                        JOptionPane.showMessageDialog(this, "No se encontraron Propietarios con ese id", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "No se encontraron Casas con ese código", "Error", JOptionPane.ERROR_MESSAGE);
                     } else {
                         JTable tabla = new JTable(model);
                         JScrollPane scroll = new JScrollPane(tabla);
 
                         // Crear ventana emergente con la tabla
-                        JDialog dialogo = new JDialog(this, "Propietarios encontrados", true);
+                        JDialog dialogo = new JDialog(this, "Casas encontradas", true);
                         dialogo.getContentPane().add(scroll);
                         dialogo.setSize(600, 300);
                         dialogo.setLocationRelativeTo(this); // Centrar respecto a la ventana principal
@@ -241,23 +248,68 @@ public class consultarVivienda extends javax.swing.JFrame {
                     }
 
                 } catch (SQLException sb) {
-                        JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
-            }else{
-                JOptionPane.showMessageDialog(this, "Rellene el campo id con un número positivo", "Error", JOptionPane.ERROR_MESSAGE);
-            
             }
 
-        }
-            
-
         } catch (NumberFormatException e) {
-           JOptionPane.showMessageDialog(this, "Rellene el campo id con un número positivo", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Rellene el campo con un código alfanumérico válido", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
 
     }//GEN-LAST:event_CheckButtonActionPerformed
+
+    private void CheckAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckAllButtonActionPerformed
+        // TODO add your handling code here:
+
+        try {
+
+            ResultSet rs = OperacionesHouse.showAllHouses();
+
+            int existe = 0;
+
+            String[] columnas = {"DIRECCIÓN", "PRECIO ALQUILER", "M2", "DESCRIPCIÓN", "PERMITE MASCOTAS", "CÓDIGO", "TIPO DE CASA", "ID OWNER"};
+            DefaultTableModel model = new DefaultTableModel(columnas, 0);
+
+            while (rs.next()) {
+
+                String address = rs.getString("address");
+                int rent = rs.getInt("rent");
+                int surface = rs.getInt("surface");
+                String description = rs.getString("description");
+                boolean allowsPets = rs.getBoolean("allowsPets");
+                String code = rs.getString("code");
+                int housetyp = rs.getInt("housetyp");
+                int idowner = rs.getInt("id_owner");
+
+                String housetype = OperacionesHouse.gettipoviviendaSpanish(housetyp);// this way se can obtain the string of the type of house, because the translations are in a mysql table
+
+                Object[] fila = {address, rent, surface, description, allowsPets, code, housetype, idowner};
+                model.addRow(fila);
+
+                existe++;
+            }
+
+            if (existe == 0) {
+                JOptionPane.showMessageDialog(this, "No se encontraron Casas, cree alguna", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JTable tabla = new JTable(model);
+                JScrollPane scroll = new JScrollPane(tabla);
+
+                // Crear ventana emergente con la tabla
+                JDialog dialogo = new JDialog(this, "Casas encontradas", true);
+                dialogo.getContentPane().add(scroll);
+                dialogo.setSize(600, 300);
+                dialogo.setLocationRelativeTo(this); // Centrar respecto a la ventana principal
+                dialogo.setVisible(true);
+            }
+
+        } catch (SQLException sb) {
+            JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_CheckAllButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,10 +342,11 @@ public class consultarVivienda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
+    private javax.swing.JButton CheckAllButton;
     private javax.swing.JButton CheckButton;
     private javax.swing.JTextField DniField2;
     private javax.swing.JTextField DniField4;
-    private javax.swing.JTextField idField;
+    private javax.swing.JTextField codeField;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;

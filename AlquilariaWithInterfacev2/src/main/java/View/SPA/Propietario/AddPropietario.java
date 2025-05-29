@@ -7,7 +7,7 @@ package View.SPA.Propietario;
 import View.SPA.*;
 import View.*;
 import javax.swing.JOptionPane;
-import Model.SPA.OperacionesPropietario;
+import Model.OperacionesOwner;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -232,7 +232,7 @@ public class AddPropietario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Rellene todos los campos", "Error", JOptionPane.ERROR_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
                 return;
             } else {
-                boo = OperacionesPropietario.insertPropietario(DniField.getText(), NameField.getText(), phoneField.getText(), emailField.getText());
+                boo = OperacionesOwner.insertPropietario(DniField.getText(), NameField.getText(), phoneField.getText(), emailField.getText());
             }
 
         } catch (SQLException ex) {

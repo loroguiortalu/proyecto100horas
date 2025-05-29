@@ -7,10 +7,15 @@ package View.SPA.Propietario;
 import View.SPA.*;
 import View.*;
 import javax.swing.JOptionPane;
-import Model.SPA.OperacionesPropietario;
+import Model.OperacionesOwner;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -50,6 +55,7 @@ public class deletePropietario extends javax.swing.JFrame {
         idField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         BorrButton = new javax.swing.JButton();
+        CheckAllOwner = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -114,12 +120,24 @@ public class deletePropietario extends javax.swing.JFrame {
             }
         });
 
+        CheckAllOwner.setBackground(new java.awt.Color(174, 202, 174));
+        CheckAllOwner.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        CheckAllOwner.setForeground(new java.awt.Color(0, 51, 51));
+        CheckAllOwner.setText("Consultar Propietarios");
+        CheckAllOwner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckAllOwnerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
+                .addComponent(CheckAllOwner)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -148,8 +166,10 @@ public class deletePropietario extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(77, 77, 77)
                 .addComponent(BorrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
-                .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CheckAllOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -197,7 +217,7 @@ public class deletePropietario extends javax.swing.JFrame {
 
                 try {
 
-                    boo = OperacionesPropietario.borrPropietario(num);
+                    boo = OperacionesOwner.borrPropietario(num);
 
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(this, "Error al borrar el propietario", "Error", JOptionPane.ERROR_MESSAGE);
@@ -218,6 +238,51 @@ public class deletePropietario extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_BorrButtonActionPerformed
+
+    private void CheckAllOwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckAllOwnerActionPerformed
+        // TODO add your handling code here:
+         try {
+
+                    ResultSet rs = OperacionesOwner.showAllOwners();
+
+                    int existe = 0;
+
+                    String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono"};
+                    DefaultTableModel model = new DefaultTableModel(columnas, 0);
+                    
+                    while (rs.next()) {
+             
+
+                        int id = rs.getInt("id");
+                        String dni = rs.getString("dni");
+                        String nombre = rs.getString("name");
+                        String email = rs.getString("email");
+                        String telefono = rs.getString("phonenumber");
+
+                        Object[] fila = {id, dni, nombre, email, telefono};
+                        model.addRow(fila);
+
+                        existe++;
+                    }
+
+                    if (existe == 0) {
+                        JOptionPane.showMessageDialog(this, "No se encontraron Propietarios", "Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        JTable tabla = new JTable(model);
+                        JScrollPane scroll = new JScrollPane(tabla);
+
+                        // Crear ventana emergente con la tabla
+                        JDialog dialogo = new JDialog(this, "Propietarios", true);
+                        dialogo.getContentPane().add(scroll);
+                        dialogo.setSize(600, 300);
+                        dialogo.setLocationRelativeTo(this); // centrar a esta ventana
+                        dialogo.setVisible(true);
+                    }
+
+                } catch (SQLException sb) {
+                        JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+                }        
+    }//GEN-LAST:event_CheckAllOwnerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,6 +312,7 @@ public class deletePropietario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
     private javax.swing.JButton BorrButton;
+    private javax.swing.JButton CheckAllOwner;
     private javax.swing.JTextField DniField2;
     private javax.swing.JTextField DniField4;
     private javax.swing.JTextField idField;

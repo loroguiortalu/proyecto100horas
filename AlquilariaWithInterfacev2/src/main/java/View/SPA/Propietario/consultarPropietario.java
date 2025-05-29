@@ -7,7 +7,7 @@ package View.SPA.Propietario;
 import View.SPA.*;
 import View.*;
 import javax.swing.JOptionPane;
-import Model.SPA.OperacionesPropietario;
+import Model.OperacionesOwner;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -55,6 +55,7 @@ public class consultarPropietario extends javax.swing.JFrame {
         idField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         CheckButton = new javax.swing.JButton();
+        CheckAllButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -112,10 +113,20 @@ public class consultarPropietario extends javax.swing.JFrame {
         CheckButton.setBackground(new java.awt.Color(174, 202, 174));
         CheckButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
         CheckButton.setForeground(new java.awt.Color(0, 51, 51));
-        CheckButton.setText("Consultar");
+        CheckButton.setText(" Consultar");
         CheckButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CheckButtonActionPerformed(evt);
+            }
+        });
+
+        CheckAllButton.setBackground(new java.awt.Color(174, 202, 174));
+        CheckAllButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        CheckAllButton.setForeground(new java.awt.Color(0, 51, 51));
+        CheckAllButton.setText("Consultar Todos");
+        CheckAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckAllButtonActionPerformed(evt);
             }
         });
 
@@ -124,23 +135,24 @@ public class consultarPropietario extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(138, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(CheckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(214, 214, 214))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelChooseLanguage1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(131, 131, 131))))
+                    .addComponent(jLabelChooseLanguage1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(131, 131, 131))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(227, 227, 227)
+                .addComponent(CheckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(CheckAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,10 +163,12 @@ public class consultarPropietario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(77, 77, 77)
+                .addGap(96, 96, 96)
                 .addComponent(CheckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
-                .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CheckAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -202,7 +216,7 @@ public class consultarPropietario extends javax.swing.JFrame {
 
                     String sb = idField.getText();
                     num = Integer.parseInt(idField.getText());
-                    ResultSet rs = OperacionesPropietario.mostrarPropietarios(num);
+                    ResultSet rs = OperacionesOwner.showOwner(num);
 
                     int existe = 0;
 
@@ -211,8 +225,6 @@ public class consultarPropietario extends javax.swing.JFrame {
                     
                     while (rs.next()) {
              
-                        //System.out.println("Id: " + rs.getInt("id") + " DNI: " + rs.getString("DNI"));
-                        //System.out.println("Nombre: " + rs.getString("name") + "Email: " + rs.getString("email") + " Teléfono: " + rs.getString("phonenumber"));
                         int id = rs.getInt("id");
                         String dni = rs.getString("dni");
                         String nombre = rs.getString("name");
@@ -258,6 +270,52 @@ public class consultarPropietario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CheckButtonActionPerformed
 
+    private void CheckAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckAllButtonActionPerformed
+        // TODO add your handling code here:
+        
+         try {
+
+                    ResultSet rs = OperacionesOwner.showAllOwners();
+
+                    int existe = 0;
+
+                    String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono"};
+                    DefaultTableModel model = new DefaultTableModel(columnas, 0);
+                    
+                    while (rs.next()) {
+             
+
+                        int id = rs.getInt("id");
+                        String dni = rs.getString("dni");
+                        String nombre = rs.getString("name");
+                        String email = rs.getString("email");
+                        String telefono = rs.getString("phonenumber");
+
+                        Object[] fila = {id, dni, nombre, email, telefono};
+                        model.addRow(fila);
+
+                        existe++;
+                    }
+
+                    if (existe == 0) {
+                        JOptionPane.showMessageDialog(this, "No se encontraron Propietarios", "Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        JTable tabla = new JTable(model);
+                        JScrollPane scroll = new JScrollPane(tabla);
+
+                        // Crear ventana emergente con la tabla
+                        JDialog dialogo = new JDialog(this, "Propietarios encontrados", true);
+                        dialogo.getContentPane().add(scroll);
+                        dialogo.setSize(600, 300);
+                        dialogo.setLocationRelativeTo(this); // centrar a esta ventana
+                        dialogo.setVisible(true);
+                    }
+
+                } catch (SQLException sb) {
+                        JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+    }//GEN-LAST:event_CheckAllButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -289,6 +347,7 @@ public class consultarPropietario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
+    private javax.swing.JButton CheckAllButton;
     private javax.swing.JButton CheckButton;
     private javax.swing.JTextField DniField2;
     private javax.swing.JTextField DniField4;

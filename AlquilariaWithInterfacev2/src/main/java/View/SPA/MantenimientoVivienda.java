@@ -180,14 +180,20 @@ public class MantenimientoVivienda extends javax.swing.JFrame {
 
     private void BVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVActionPerformed
         // TODO add your handling code here:
+        new deleteVivienda().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BVActionPerformed
 
     private void MVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MVActionPerformed
         // TODO add your handling code here:
+        new modifyVivienda().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_MVActionPerformed
 
     private void CVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CVActionPerformed
         // TODO add your handling code here:
+        new consultarVivienda().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_CVActionPerformed
 
     private void AVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AVActionPerformed
