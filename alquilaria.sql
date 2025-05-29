@@ -54,6 +54,7 @@ CREATE TABLE owner (
 );
 
 
+
 -- Creation of House table 
 DROP TABLE IF EXISTS house;
 CREATE TABLE house (
