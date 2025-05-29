@@ -305,8 +305,9 @@ public class modifyVivienda extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(224, 208, 252));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
-        Atras.setBackground(new java.awt.Color(0, 102, 51));
+        Atras.setBackground(new java.awt.Color(137, 111, 181));
         Atras.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        Atras.setForeground(new java.awt.Color(255, 255, 255));
         Atras.setText("Atrás"); // NOI18N
         Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -402,20 +403,16 @@ public class modifyVivienda extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelChooseLanguage1)
-                .addGap(137, 137, 137))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(checkViviendasButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                         .addComponent(checkAllOButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(8, Short.MAX_VALUE))
+                        .addContainerGap(19, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -438,28 +435,30 @@ public class modifyVivienda extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel15)
                                     .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(SelectorPets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(77, 77, 77)
                                             .addComponent(SelectorH, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(idF, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(idF)))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel11)
                                     .addGap(18, 18, 18)
                                     .addComponent(rentF, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(246, 246, 246)
-                                .addComponent(ModifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(74, 74, 74)))
+                                .addComponent(ModifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(131, 131, 131)
+                                .addComponent(jLabelChooseLanguage1)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelChooseLanguage1)
-                .addGap(30, 30, 30)
+                .addGap(14, 14, 14)
+                .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codeF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
@@ -479,7 +478,7 @@ public class modifyVivienda extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(adressF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
@@ -513,9 +512,6 @@ public class modifyVivienda extends javax.swing.JFrame {
 
     private void Atras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Atras1ActionPerformed
         // TODO add your handling code here:
-        // botón atrás
-        new MantenimientoVivienda().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_Atras1ActionPerformed
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
@@ -533,46 +529,7 @@ public class modifyVivienda extends javax.swing.JFrame {
 
     private void checkAllOwnersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAllOwnersButtonActionPerformed
         // TODO add your handling code here:
-        try {
-
-            ResultSet rs = OperacionesOwner.showAllOwners();
-
-            int existe = 0;
-
-            String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono"};
-            DefaultTableModel model = new DefaultTableModel(columnas, 0);
-
-            while (rs.next()) {
-
-                int id = rs.getInt("id");
-                String dni = rs.getString("dni");
-                String nombre = rs.getString("name");
-                String email = rs.getString("email");
-                String telefono = rs.getString("phonenumber");
-
-                Object[] fila = {id, dni, nombre, email, telefono};
-                model.addRow(fila);
-
-                existe++;
-            }
-
-            if (existe == 0) {
-                JOptionPane.showMessageDialog(this, "No se encontraron Propietarios", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                JTable tabla = new JTable(model);
-                JScrollPane scroll = new JScrollPane(tabla);
-
-                // Crear ventana emergente con la tabla
-                JDialog dialogo = new JDialog(this, "Propietarios encontrados", true);
-                dialogo.getContentPane().add(scroll);
-                dialogo.setSize(600, 300);
-                dialogo.setLocationRelativeTo(this); // centrar a esta ventana
-                dialogo.setVisible(true);
-            }
-
-        } catch (SQLException sb) {
-            JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        // I dont understand why but i can't errase this button methods
     }//GEN-LAST:event_checkAllOwnersButtonActionPerformed
 
     private void SelectorHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectorHActionPerformed
@@ -585,52 +542,48 @@ public class modifyVivienda extends javax.swing.JFrame {
 
     private void checkAllOButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAllOButtonActionPerformed
         // TODO add your handling code here:
+         try {
 
-        try {
+                    ResultSet rs = OperacionesOwner.showAllOwners();
 
-            ResultSet rs = OperacionesHouse.showAllHouses();
+                    int existe = 0;
 
-            int existe = 0;
+                    String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono"};
+                    DefaultTableModel model = new DefaultTableModel(columnas, 0);
+                    
+                    while (rs.next()) {
+             
 
-            String[] columnas = {"DIRECCIÓN", "PRECIO ALQUILER", "M2", "DESCRIPCIÓN", "PERMITE MASCOTAS", "CÓDIGO", "TIPO DE CASA", "ID OWNER"};
-            DefaultTableModel model = new DefaultTableModel(columnas, 0);
+                        int id = rs.getInt("id");
+                        String dni = rs.getString("dni");
+                        String nombre = rs.getString("name");
+                        String email = rs.getString("email");
+                        String telefono = rs.getString("phonenumber");
 
-            while (rs.next()) {
+                        Object[] fila = {id, dni, nombre, email, telefono};
+                        model.addRow(fila);
 
-                String address = rs.getString("address");
-                int rent = rs.getInt("rent");
-                int surface = rs.getInt("surface");
-                String description = rs.getString("description");
-                boolean allowsPets = rs.getBoolean("allowsPets");
-                String code = rs.getString("code");
-                int housetyp = rs.getInt("housetyp");
-                int idowner = rs.getInt("id_owner");
+                        existe++;
+                    }
 
-                String housetype = OperacionesHouse.gettipoviviendaSpanish(housetyp);// this way se can obtain the string of the type of house, because the translations are in a mysql table
+                    if (existe == 0) {
+                        JOptionPane.showMessageDialog(this, "No se encontraron Propietarios", "Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        JTable tabla = new JTable(model);
+                        JScrollPane scroll = new JScrollPane(tabla);
 
-                Object[] fila = {address, rent, surface, description, allowsPets, code, housetype, idowner};
-                model.addRow(fila);
+                        // Crear ventana emergente con la tabla
+                        JDialog dialogo = new JDialog(this, "Propietarios encontrados", true);
+                        dialogo.getContentPane().add(scroll);
+                        dialogo.setSize(600, 300);
+                        dialogo.setLocationRelativeTo(this); // centrar a esta ventana
+                        dialogo.setVisible(true);
+                    }
 
-                existe++;
-            }
-
-            if (existe == 0) {
-                JOptionPane.showMessageDialog(this, "No se encontraron Casas", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                JTable tabla = new JTable(model);
-                JScrollPane scroll = new JScrollPane(tabla);
-
-                // Crear ventana emergente con la tabla
-                JDialog dialogo = new JDialog(this, "Casas encontradas", true);
-                dialogo.getContentPane().add(scroll);
-                dialogo.setSize(600, 300);
-                dialogo.setLocationRelativeTo(this); // Centrar respecto a la ventana principal
-                dialogo.setVisible(true);
-            }
-
-        } catch (SQLException sb) {
-            JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+                } catch (SQLException sb) {
+                        JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+        
     }//GEN-LAST:event_checkAllOButtonActionPerformed
 
     private void checkViviendasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkViviendasButtonActionPerformed
@@ -656,7 +609,8 @@ public class modifyVivienda extends javax.swing.JFrame {
                 int housetyp = rs.getInt("housetyp");
                 int idowner = rs.getInt("id_owner");
 
-                String housetype = OperacionesHouse.gettipoviviendaSpanish(housetyp);// this way se can obtain the string of the type of house, because the translations are in a mysql table
+                String housetype = OperacionesHouse.getHouseType(housetyp,2);// this way se can obtain the string of the type of house, because the translations are in a mysql table, and you can choose the language,
+                // 1 for english, 2 for spanish
 
                 Object[] fila = {address, rent, surface, description, allowsPets, code, housetype, idowner};
                 model.addRow(fila);
@@ -689,36 +643,32 @@ public class modifyVivienda extends javax.swing.JFrame {
         boolean isNum;
         int num = 0;
 
-        try {
-
-            if (codeField.getText().isEmpty()) {
+         
+            if (codeF.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Rellene el campo Código para indicar que vivienda se modifica", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
             } else {
 
                 try {
 
-                    int re = Integer.parseInt(rentField.getText());// I have to parse them all
-                    int m2 = Integer.parseInt(m2Field.getText());
-                    String seleccionMascotas = (String) SelectorAllowsPets.getSelectedItem();
-                    boolean allowsPets = seleccionMascotas.equals("Permite Mascotas");
-                    String seleccionTipo = (String) SelectorHouse.getSelectedItem();
-                    int housetyp;
-                    switch (seleccionTipo) {
-                        case "Casa":
-                            housetyp = 1;
-                            break;
-                        case "Apartamento":
-                            housetyp = 2;
-                            break;
-                        case "Ático":
-                            housetyp = 3;
-                            break;
-                        default:
-                            housetyp = 0; // Por si acaso
+                    int re = Integer.parseInt(rentF.getText());// I have to parse them all
+                    int m2 = Integer.parseInt(m2F.getText());
+                    String seleccionPets = (String) SelectorPets.getSelectedItem();
+                    boolean allowsPets = seleccionPets.equals("Permite Mascotas");
+                    int housetyp = 1;
+                    String h = SelectorH.getSelectedItem().toString();
+                    if (h.contains("Casa")) {
+                        housetyp = 1;// Im using this if structure because using a switch doesn't work at all for some reason
                     }
-                    int id_owner = Integer.parseInt(idField.getText());
+                    if (h.contains("Apartamento")) {
+                        housetyp = 2;
+                    }
+                    if (h.contains("Ático")) {
+                        housetyp = 3;
+                    }
+                    int id_owner = Integer.parseInt(idF.getText());
 
-                    boolean boo = OperacionesOwner.modifyPropietario(m2, seleccionTipo, seleccionTipo, seleccionTipo, seleccionTipo);
+                    //String address, int rent, int surface, String description, boolean allowsPets, String code, int housetyp, int id_owner
+                    boolean boo = OperacionesHouse.modifyVivienda(adressF.getText(), re, m2, descriptionF.getText(), allowsPets, codeF.getText(), housetyp, id_owner);
 
                     if (boo) {
                         JOptionPane.showMessageDialog(this, "El propietario se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
@@ -732,15 +682,13 @@ public class modifyVivienda extends javax.swing.JFrame {
 
             }
 
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Rellene el campo id con un número positivo", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+
     }//GEN-LAST:event_ModifyButtonActionPerformed
 
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         // TODO add your handling code here:
-        // botón atrás
-        new MantenimientoPropietario().setVisible(true);
+        // real back button
+        new MantenimientoVivienda().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_AtrasActionPerformed
 

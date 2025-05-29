@@ -100,8 +100,9 @@ public class modifyPropietario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(224, 254, 224));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
-        Atras.setBackground(new java.awt.Color(0, 102, 51));
+        Atras.setBackground(new java.awt.Color(107, 137, 107));
         Atras.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        Atras.setForeground(new java.awt.Color(255, 255, 255));
         Atras.setText("Atrás"); // NOI18N
         Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

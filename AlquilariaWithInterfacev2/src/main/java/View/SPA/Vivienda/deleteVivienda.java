@@ -54,10 +54,10 @@ public class deleteVivienda extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Atras = new javax.swing.JButton();
         jLabelChooseLanguage1 = new javax.swing.JLabel();
-        idField = new javax.swing.JTextField();
+        codeField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         BorrButton = new javax.swing.JButton();
-        CheckAllOwner = new javax.swing.JButton();
+        CheckAllhouses = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -95,6 +95,7 @@ public class deleteVivienda extends javax.swing.JFrame {
 
         Atras.setBackground(new java.awt.Color(137, 111, 181));
         Atras.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        Atras.setForeground(new java.awt.Color(255, 255, 255));
         Atras.setText("Atrás"); // NOI18N
         Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +107,7 @@ public class deleteVivienda extends javax.swing.JFrame {
         jLabelChooseLanguage1.setForeground(new java.awt.Color(51, 0, 0));
         jLabelChooseLanguage1.setText("Borrar Vivienda");
 
-        idField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        codeField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Caladea", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
@@ -122,13 +123,13 @@ public class deleteVivienda extends javax.swing.JFrame {
             }
         });
 
-        CheckAllOwner.setBackground(new java.awt.Color(203, 176, 249));
-        CheckAllOwner.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-        CheckAllOwner.setForeground(new java.awt.Color(61, 52, 76));
-        CheckAllOwner.setText("Consultar Vivienda");
-        CheckAllOwner.addActionListener(new java.awt.event.ActionListener() {
+        CheckAllhouses.setBackground(new java.awt.Color(203, 176, 249));
+        CheckAllhouses.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        CheckAllhouses.setForeground(new java.awt.Color(61, 52, 76));
+        CheckAllhouses.setText("Consultar Viviendas");
+        CheckAllhouses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CheckAllOwnerActionPerformed(evt);
+                CheckAllhousesActionPerformed(evt);
             }
         });
 
@@ -136,43 +137,43 @@ public class deleteVivienda extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(jLabelChooseLanguage1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(161, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BorrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(219, 219, 219))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(CheckAllOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CheckAllhouses, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
                 .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(jLabelChooseLanguage1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(36, 36, 36)
                 .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(110, 110, 110)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(82, 82, 82)
+                .addGap(81, 81, 81)
                 .addComponent(BorrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CheckAllOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CheckAllhouses, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -193,7 +194,7 @@ public class deleteVivienda extends javax.swing.JFrame {
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         // TODO add your handling code here:
         // botón atrás
-        new MantenimientoPropietario().setVisible(true); 
+        new MantenimientoVivienda().setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_AtrasActionPerformed
@@ -202,14 +203,13 @@ public class deleteVivienda extends javax.swing.JFrame {
         // TODO add your handling code here:
         boolean boo = false;
         boolean isNum = false;
-        int num = 0;
 
-        if (idField.getText().isEmpty()) {
+        if (codeField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Rellene el campo con un código", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
         } else {
             try {
-
-                boo = OperacionesOwner.borrPropietario(num);
+                String s = codeField.getText();
+                boo = OperacionesHouse.borrVivienda(s);
 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Error al borrar la vivienda", "Error", JOptionPane.ERROR_MESSAGE);
@@ -217,7 +217,7 @@ public class deleteVivienda extends javax.swing.JFrame {
 
             if (boo) {
                 JOptionPane.showMessageDialog(this, "La vivienda se ha borrado satisfactoriamente", "Info", JOptionPane.INFORMATION_MESSAGE);
-                idField.setText("");
+                codeField.setText("");
 
             } else {
                 JOptionPane.showMessageDialog(this, "Error al borrar la vivienda", "Error", JOptionPane.ERROR_MESSAGE);
@@ -226,7 +226,7 @@ public class deleteVivienda extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BorrButtonActionPerformed
 
-    private void CheckAllOwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckAllOwnerActionPerformed
+    private void CheckAllhousesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckAllhousesActionPerformed
         // TODO add your handling code here:
 
         try {
@@ -249,7 +249,7 @@ public class deleteVivienda extends javax.swing.JFrame {
                 int housetyp = rs.getInt("housetyp");
                 int idowner = rs.getInt("id_owner");
 
-                String housetype = OperacionesHouse.gettipoviviendaSpanish(housetyp);// this way se can obtain the string of the type of house, because the translations are in a mysql table
+                String housetype = OperacionesHouse.getHouseType(housetyp, 2);// this way se can obtain the string of the type of house, because the translations are in a mysql table
 
                 Object[] fila = {address, rent, surface, description, allowsPets, code, housetype, idowner};
                 model.addRow(fila);
@@ -274,7 +274,7 @@ public class deleteVivienda extends javax.swing.JFrame {
         } catch (SQLException sb) {
             JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
         }     
-    }//GEN-LAST:event_CheckAllOwnerActionPerformed
+    }//GEN-LAST:event_CheckAllhousesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,10 +304,10 @@ public class deleteVivienda extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
     private javax.swing.JButton BorrButton;
-    private javax.swing.JButton CheckAllOwner;
+    private javax.swing.JButton CheckAllhouses;
     private javax.swing.JTextField DniField2;
     private javax.swing.JTextField DniField4;
-    private javax.swing.JTextField idField;
+    private javax.swing.JTextField codeField;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;

@@ -64,8 +64,9 @@ public class MantenimientoPropietario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(224, 254, 224));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
-        Atrasbutton.setBackground(new java.awt.Color(0, 102, 51));
+        Atrasbutton.setBackground(new java.awt.Color(107, 137, 107));
         Atrasbutton.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        Atrasbutton.setForeground(new java.awt.Color(255, 255, 255));
         Atrasbutton.setText("Atrás"); // NOI18N
         Atrasbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

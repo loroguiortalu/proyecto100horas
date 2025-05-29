@@ -72,8 +72,9 @@ public class SpanishMenu extends javax.swing.JFrame {
         PanelMenu.setPreferredSize(new java.awt.Dimension(1024, 720));
         PanelMenu.setRequestFocusEnabled(false);
 
-        Salir.setBackground(new java.awt.Color(123, 123, 36));
+        Salir.setBackground(new java.awt.Color(159, 155, 102));
         Salir.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        Salir.setForeground(new java.awt.Color(255, 255, 255));
         Salir.setText("Salir del programa"); // NOI18N
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

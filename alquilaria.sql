@@ -102,6 +102,48 @@ CREATE TABLE contract (
 
 
 
+-- triggers for the dni's to be always in uppercase
+DELIMITER //
+CREATE TRIGGER tr_before_insert_owner
+BEFORE INSERT ON owner
+FOR EACH ROW
+BEGIN
+    SET NEW.dni = UPPER(NEW.dni);
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER tr_before_insert_tenant
+BEFORE INSERT ON tenant
+FOR EACH ROW
+BEGIN
+    SET NEW.dni = UPPER(NEW.dni);
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER tr_before_modify_owner
+BEFORE MODIFY ON owner
+FOR EACH ROW
+BEGIN
+    SET NEW.dni = UPPER(NEW.dni);
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER tr_before_modify_tenant
+BEFORE MODIFY ON tenant
+FOR EACH ROW
+BEGIN
+    SET NEW.dni = UPPER(NEW.dni);
+END;
+//
+DELIMITER ;
+
+
 
 
 

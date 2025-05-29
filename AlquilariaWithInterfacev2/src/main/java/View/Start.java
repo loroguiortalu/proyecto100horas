@@ -77,8 +77,9 @@ public class Start extends javax.swing.JFrame {
         jLabelChooseLanguage.setForeground(new java.awt.Color(51, 0, 0));
         jLabelChooseLanguage.setText("Choose a Language");
 
-        Exit.setBackground(new java.awt.Color(123, 123, 36));
+        Exit.setBackground(new java.awt.Color(159, 155, 102));
         Exit.setFont(new java.awt.Font("Futura", 1, 14)); // NOI18N
+        Exit.setForeground(new java.awt.Color(255, 255, 255));
         Exit.setText("Exit"); // NOI18N
         Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

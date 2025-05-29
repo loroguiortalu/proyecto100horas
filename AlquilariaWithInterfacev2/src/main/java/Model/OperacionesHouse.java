@@ -44,7 +44,7 @@ public class OperacionesHouse {
             ps.setInt(8, id_owner);
 
             ps.executeUpdate();
-            conn.close();
+            //conn.close();
             return true;
 
         } catch (Exception e) {
@@ -64,20 +64,23 @@ public class OperacionesHouse {
 
             ps.setString(1, code);
 
-            ps.executeUpdate();
-            conn.close();
-            return true;
+            int a = ps.executeUpdate();
+
+            if (a > 0) {
+                return true;
+            } else {
+                return false;
+            }
 
         } catch (Exception e) {
-            conn.close();
+            //conn.close();
             return false;
 
         }
 
     }
 
-    public static boolean modifyVivienda(String address, int rent, int surface, String description,
-        boolean allowsPets, String code, int housetyp, int id_owner) throws SQLException {
+    public static boolean modifyVivienda(String address, int rent, int surface, String description, boolean allowsPets, String code, int housetyp, int id_owner) throws SQLException {
 
         boolean boo = false;
 
@@ -94,7 +97,7 @@ public class OperacionesHouse {
                 ps.executeUpdate();
                 ps.close();
                 boo = true;
-            }
+            } 
 
             if (rent > 0) {
                 query = "UPDATE house SET rent = ? WHERE id = ?";
@@ -158,10 +161,10 @@ public class OperacionesHouse {
             }
             
             
-            conn.close();
+            //conn.close();
 
         } catch (Exception e) {
-            conn.close();
+            //conn.close();
             return false;
         }
 
@@ -181,12 +184,12 @@ public class OperacionesHouse {
             ps.setString(1, code);
 
             rs = ps.executeQuery();
-            conn.close();
+            //conn.close();
             return rs;
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-            conn.close();
+            //conn.close();
             return rs;
 
         }
@@ -203,41 +206,68 @@ public class OperacionesHouse {
             PreparedStatement ps = conn.prepareStatement(s);
 
             rs = ps.executeQuery();
-            conn.close();
+            //conn.close();
             return rs;
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-            conn.close();
+            //conn.close();
             return rs;
 
         }
     }
 
-    public static String gettipoviviendaSpanish(int id) throws SQLException {
+    public static String getHouseType(int id, int idioma) throws SQLException {
 
         ResultSet rs = null;
-        String sb;
+        String sb = "";
 
-        try {
-            conn = ConnectionDB.obtainConnection();
+        switch (idioma) {
+            case 1://english
+                try {
+                    conn = ConnectionDB.obtainConnection();
 
-            String s = "SELECT wspanish FROM housetype WHERE id = ? ";
-            PreparedStatement ps = conn.prepareStatement(s);
-            ps.setInt(1, id);
-            rs = ps.executeQuery();
-            sb = rs.getString("wspanish");
-            conn.close();
-            return sb;
+                    String s = "SELECT wenglish FROM housetype WHERE id = ? ";
+                    PreparedStatement ps = conn.prepareStatement(s);
+                    ps.setInt(1, id);
+                    rs = ps.executeQuery();
+                    while (rs.next()) {
+                        sb = rs.getString("wspanish");
+                    }
+                    //conn.close();
 
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            conn.close();
-            return "error";
+                } catch (Exception e) {
+                    System.out.println("Error: " + e.getMessage());
+                    //conn.close();
+                    sb = "error";
 
+                }
+                break;
+            case 2://spanish
+                try {
+                    conn = ConnectionDB.obtainConnection();
+
+                    String s = "SELECT wspanish FROM housetype WHERE id = ? ";
+                    PreparedStatement ps = conn.prepareStatement(s);
+                    ps.setInt(1, id);
+                    rs = ps.executeQuery();
+                    while (rs.next()) {
+                        sb = rs.getString("wspanish");
+                    }
+                    //conn.close();
+
+                } catch (Exception e) {
+                    System.out.println("Error: " + e.getMessage());
+                    //conn.close();
+                    sb = "error";
+
+                }
+                break;
         }
+
+        return sb;
+
     }
 
 }
-
 
