@@ -504,7 +504,6 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
                                   <Component id="ModifyButton" min="-2" pref="265" max="-2" attributes="0"/>
-                                  <EmptySpace min="74" pref="74" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>

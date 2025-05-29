@@ -76,7 +76,8 @@ public class OperacionesHouse {
 
     }
 
-    public static boolean modifyPropietario(int id, String dni, String n, String phonenumber, String email) throws SQLException {
+    public static boolean modifyVivienda(String address, int rent, int surface, String description,
+        boolean allowsPets, String code, int housetyp, int id_owner) throws SQLException {
 
         boolean boo = false;
 
@@ -85,45 +86,77 @@ public class OperacionesHouse {
 
             String query = "";
 
-            if (!dni.isEmpty() && dni != null) {// comprobando si los strings enviados se les ha dado intro simplemente, y si se ha introducido algo entonces se modifica esa parte del cliente, una por una, así puedes modificar desde solo un dato del cliente a cambiar el cliente completamente (excepto el id)
-                query = "UPDATE owner SET dni = ? WHERE id = ?";
+            if (!address.isEmpty() && address != null) {// comprobando si los strings enviados se les ha dado intro simplemente, y si se ha introducido algo entonces se modifica esa parte del cliente, una por una, así puedes modificar desde solo un dato del cliente a cambiar el cliente completamente (excepto el id)
+                query = "UPDATE house SET address = ? WHERE code = ?";
                 PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, dni);
-                ps.setInt(2, id);
+                ps.setString(1, address);
+                ps.setString(2, code);
                 ps.executeUpdate();
                 ps.close();
                 boo = true;
             }
 
-            if (!n.isEmpty() && n != null) {
-                query = "UPDATE owner SET name = ? WHERE id = ?";
+            if (rent > 0) {
+                query = "UPDATE house SET rent = ? WHERE id = ?";
                 PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, n);
-                ps.setInt(2, id);
+                ps.setInt(1, rent);
+                ps.setString(2, code);
                 ps.executeUpdate();
                 ps.close();
                 boo = true;
             }
 
-            if (!email.isEmpty() && email != null) {
-                query = "UPDATE owner SET email = ? WHERE id = ?";
+            if (surface > 0 ) {
+                query = "UPDATE house SET surface = ? WHERE id = ?";
                 PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, email);
-                ps.setInt(2, id);
+                ps.setInt(1, surface);
+                ps.setString(2, code);
                 ps.executeUpdate();
                 ps.close();
                 boo = true;
             }
-            if (!phonenumber.isEmpty() && phonenumber != null) {
-                query = "UPDATE owner SET phonenumber = ? WHERE id = ?";
+            if (!description.isEmpty() && description != null) {
+                query = "UPDATE house SET description = ? WHERE id = ?";
                 PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, phonenumber);
-                ps.setInt(2, id);
+                ps.setString(1, description);
+                ps.setString(2, code);
                 ps.executeUpdate();
                 ps.close();
                 boo = true;
 
             }
+            
+            if (allowsPets == false || allowsPets == true ) {
+                query = "UPDATE house SET allowsPets = ? WHERE id = ?";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setBoolean(1, allowsPets);
+                ps.setString(2, code);
+                ps.executeUpdate();
+                ps.close();
+                boo = true;
+
+            }
+            
+            if (housetyp > 0) {
+                query = "UPDATE house SET housetyp = ? WHERE id = ?";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setInt(1, housetyp);
+                ps.setString(2, code);
+                ps.executeUpdate();
+                ps.close();
+                boo = true;
+            }
+            
+            if (id_owner > 0) {
+                query = "UPDATE house SET id_owner = ? WHERE id = ?";
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setInt(1, id_owner);
+                ps.setString(2, code);
+                ps.executeUpdate();
+                ps.close();
+                boo = true;
+            }
+            
             
             conn.close();
 

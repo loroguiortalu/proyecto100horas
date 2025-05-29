@@ -692,30 +692,42 @@ public class modifyVivienda extends javax.swing.JFrame {
         try {
 
             if (codeField.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Rellene el campo Código para seleccionar que", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                JOptionPane.showMessageDialog(this, "Rellene el campo Código para indicar que vivienda se modifica", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
             } else {
 
-                num = Integer.parseInt(codeField.getText());
-                isNum = true;
+                try {
 
-                if (isNum = true) {
-                    String s = codeField.getText();
-                    num = Integer.parseInt(codeField.getText());
-
-                    try {
-                        boolean boo = OperacionesOwner.modifyPropietario(adressField.getText(), re, m2, descriptionField.getText(), allowsPets, codeField.getText(), housetyp, id_owner);
-
-                        if (boo) {
-                            JOptionPane.showMessageDialog(this, "El propietario se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Por algún motivo el propietario no se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
-                        }
-
-                    } catch (SQLException ex) {
-                        Logger.getLogger(modifyVivienda.class.getName()).log(Level.SEVERE, null, ex);
+                    int re = Integer.parseInt(rentField.getText());// I have to parse them all
+                    int m2 = Integer.parseInt(m2Field.getText());
+                    String seleccionMascotas = (String) SelectorAllowsPets.getSelectedItem();
+                    boolean allowsPets = seleccionMascotas.equals("Permite Mascotas");
+                    String seleccionTipo = (String) SelectorHouse.getSelectedItem();
+                    int housetyp;
+                    switch (seleccionTipo) {
+                        case "Casa":
+                            housetyp = 1;
+                            break;
+                        case "Apartamento":
+                            housetyp = 2;
+                            break;
+                        case "Ático":
+                            housetyp = 3;
+                            break;
+                        default:
+                            housetyp = 0; // Por si acaso
                     }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                    int id_owner = Integer.parseInt(idField.getText());
+
+                    boolean boo = OperacionesOwner.modifyPropietario(m2, seleccionTipo, seleccionTipo, seleccionTipo, seleccionTipo);
+
+                    if (boo) {
+                        JOptionPane.showMessageDialog(this, "El propietario se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Por algún motivo el propietario no se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                    }
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(modifyVivienda.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
