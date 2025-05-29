@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package View.SPA.Vivienda;
+package View.SPA.Propietario;
 
-import View.SPA.Propietario.*;
 import View.SPA.*;
 import View.*;
 import javax.swing.JOptionPane;
@@ -22,14 +21,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Loro
  */
-public class modifyVivienda extends javax.swing.JFrame {
+public class modifyPropietario extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(modifyVivienda.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(modifyPropietario.class.getName());
 
     /**
      * Creates new form Spanish
      */
-    public modifyVivienda() {
+    public modifyPropietario() {
         initComponents();
         setLocationRelativeTo(null);//center in the screen
         
@@ -293,7 +292,7 @@ public class modifyVivienda extends javax.swing.JFrame {
                         }
 
                     } catch (SQLException ex) {
-                        Logger.getLogger(modifyVivienda.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(modifyPropietario.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
                     JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
@@ -408,7 +407,7 @@ public class modifyVivienda extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new modifyVivienda().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new modifyPropietario().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package View.SPA.Vivienda;
+package View.SPA.Propietario;
 
-import View.SPA.Propietario.*;
 import View.SPA.*;
 import View.*;
 import javax.swing.JOptionPane;
@@ -17,14 +16,14 @@ import java.util.logging.Logger;
  *
  * @author Loro
  */
-public class deleteVivienda extends javax.swing.JFrame {
+public class deletePropietario extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(deleteVivienda.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(deletePropietario.class.getName());
 
     /**
      * Creates new form Spanish
      */
-    public deleteVivienda() {
+    public deletePropietario() {
         initComponents();
         setLocationRelativeTo(null);//center in the screen
         
@@ -242,7 +241,7 @@ public class deleteVivienda extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new deleteVivienda().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new deletePropietario().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
