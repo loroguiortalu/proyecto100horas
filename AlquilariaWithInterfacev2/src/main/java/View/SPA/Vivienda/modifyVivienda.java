@@ -664,11 +664,8 @@ public class modifyVivienda extends javax.swing.JFrame {
                         re = 0;
                     }
                 }
-                
-                
-                
                 Integer m2;
-                String tb = rentF.getText();
+                String tb = m2F.getText();
                 if (tb.isEmpty()) {
                     m2 = 0;
                 } else {
@@ -678,8 +675,6 @@ public class modifyVivienda extends javax.swing.JFrame {
                         m2 = 0;
                     }
                 }
-                
-                
                 String seleccionPets = (String) SelectorPets.getSelectedItem();
                 boolean allowsPets = seleccionPets.equals("Permite Mascotas");
                 Integer housetyp = 1;
@@ -710,11 +705,11 @@ public class modifyVivienda extends javax.swing.JFrame {
 
                 //String address, int rent, int surface, String description, boolean allowsPets, String code, int housetyp, int id_owner
                 boolean boo = OperacionesHouse.modifyVivienda(adressF.getText(), re, m2, descriptionF.getText(), allowsPets, codeF.getText(), housetyp, id_owner);
-
+                //Could I have done it better with callable statemts, yes, I tried, but I didn't liked it
                 if (boo) {
-                    JOptionPane.showMessageDialog(this, "El propietario se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                    JOptionPane.showMessageDialog(this, "La vivienda se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
                 } else {
-                    JOptionPane.showMessageDialog(this, "Por algún motivo el propietario no se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                    JOptionPane.showMessageDialog(this, "Por algún motivo la vivienda no se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
                 }
 
             } catch (SQLException ex) {

@@ -81,44 +81,83 @@ public class OperacionesHouse {
 
     }
 
-    public static boolean modifyVivienda(String address, Integer rent, Integer surface, String description, boolean allowsPets, String code, Integer housetyp, Integer id_owner) throws SQLException {
-        boolean result = false;
+    public static boolean modifyVivienda(String address, Integer rent, Integer surface, String description, Boolean allowsPets, String code, Integer housetyp, Integer id_owner) throws SQLException {
+    boolean modified = false;
+    Connection conn = null;
+    PreparedStatement ps = null;
 
-        Connection conn = null;
-        CallableStatement cs = null;
+    try {
+        conn = ConnectionDB.obtainConnection();
 
-        try {
-            conn = ConnectionDB.obtainConnection(); // Asegúrate de tener este método correctamente implementado
-
-            cs = conn.prepareCall("{CALL sp_modificar_vivienda(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
-
-            cs.setString(1, address);
-            cs.setInt(2, rent);
-            cs.setInt(3, surface);
-            cs.setString(4, description);
-            cs.setBoolean(5, allowsPets);
-            cs.setString(6, code);
-            cs.setInt(7, housetyp);
-            cs.setInt(8, id_owner);
-            cs.registerOutParameter(9, java.sql.Types.BOOLEAN);
-
-            cs.execute();
-
-            result = cs.getBoolean(9);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            result = false;
-        } finally {
-            if (cs != null) {
-                cs.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
+        if (address != null && !address.trim().isEmpty()) {
+            String sql = "UPDATE house SET address = ? WHERE code = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, address);
+            ps.setString(2, code);
+            modified |= (ps.executeUpdate() > 0);
+            ps.close();
         }
 
-    return result;
+        if (rent != null && rent > 0) {
+            String sql = "UPDATE house SET rent = ? WHERE code = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, rent);
+            ps.setString(2, code);
+            modified |= (ps.executeUpdate() > 0);
+            ps.close();
+        }
+
+        if (surface != null && surface > 0) {
+            String sql = "UPDATE house SET surface = ? WHERE code = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, surface);
+            ps.setString(2, code);
+            modified |= (ps.executeUpdate() > 0);
+            ps.close();
+        }
+
+        if (description != null && !description.trim().isEmpty()) {
+            String sql = "UPDATE house SET description = ? WHERE code = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, description);
+            ps.setString(2, code);
+            modified |= (ps.executeUpdate() > 0);
+            ps.close();
+        }
+
+        if (allowsPets != null) {
+            String sql = "UPDATE house SET allowsPets = ? WHERE code = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setBoolean(1, allowsPets);
+            ps.setString(2, code);
+            modified |= (ps.executeUpdate() > 0);
+            ps.close();
+        }
+
+        if (housetyp != null && housetyp > 0) {
+            String sql = "UPDATE house SET housetyp = ? WHERE code = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, housetyp);
+            ps.setString(2, code);
+            modified |= (ps.executeUpdate() > 0);
+            ps.close();
+        }
+
+        if (id_owner != null && id_owner > 0) {
+            String sql = "UPDATE house SET id_owner = ? WHERE code = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id_owner);
+            ps.setString(2, code);
+            modified |= (ps.executeUpdate() > 0);
+            ps.close();
+        }
+
+    } finally {
+        if (ps != null) ps.close();
+        if (conn != null) conn.close();
+    }
+
+    return modified;
 }
 
     public static ResultSet showHouse(String code) throws SQLException {

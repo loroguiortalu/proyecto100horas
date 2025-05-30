@@ -144,6 +144,8 @@ END;
 DELIMITER ;
 
 
+
+-- I could have done like this the modification, but I prefered to use PreparedStatements
 DELIMITER //
 CREATE PROCEDURE sp_modificar_vivienda(
     IN v_address VARCHAR(200),
