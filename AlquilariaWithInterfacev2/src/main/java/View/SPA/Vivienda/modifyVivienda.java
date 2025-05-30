@@ -595,7 +595,7 @@ public class modifyVivienda extends javax.swing.JFrame {
 
             int existe = 0;
 
-            String[] columnas = {"DIRECCIÓN", "PRECIO ALQUILER", "M2", "DESCRIPCIÓN", "PERMITE MASCOTAS", "CÓDIGO", "TIPO DE CASA", "ID OWNER"};
+            String[] columnas = { "CÓDIGO", "DIRECCIÓN", "PRECIO ALQUILER", "M2", "DESCRIPCIÓN", "PERMITE MASCOTAS", "TIPO DE CASA", "ID OWNER"};
             DefaultTableModel model = new DefaultTableModel(columnas, 0);
 
             while (rs.next()) {
@@ -612,7 +612,7 @@ public class modifyVivienda extends javax.swing.JFrame {
                 String housetype = OperacionesHouse.getHouseType(housetyp,2);// this way se can obtain the string of the type of house, because the translations are in a mysql table, and you can choose the language,
                 // 1 for english, 2 for spanish
 
-                Object[] fila = {address, rent, surface, description, allowsPets, code, housetype, idowner};
+                Object[] fila = { code, address, rent, surface, description, allowsPets, housetype, idowner};
                 model.addRow(fila);
 
                 existe++;
@@ -643,44 +643,85 @@ public class modifyVivienda extends javax.swing.JFrame {
         boolean isNum;
         int num = 0;
 
-         
-            if (codeF.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Rellene el campo Código para indicar que vivienda se modifica", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
-            } else {
+        if (codeF.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Rellene el campo Código para indicar que vivienda se modifica", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+        } else {
 
-                try {
+            try {
+                
+                
 
-                    int re = Integer.parseInt(rentF.getText());// I have to parse them all
-                    int m2 = Integer.parseInt(m2F.getText());
-                    String seleccionPets = (String) SelectorPets.getSelectedItem();
-                    boolean allowsPets = seleccionPets.equals("Permite Mascotas");
-                    int housetyp = 1;
-                    String h = SelectorH.getSelectedItem().toString();
-                    if (h.contains("Casa")) {
-                        housetyp = 1;// Im using this if structure because using a switch doesn't work at all for some reason
+                
+                Integer re;
+                String t = rentF.getText();// I do this (setting ints to 0) because that way i dont have errors and if those ints equal 0 wont be modified (see OperacionesHouse.modifyVivienda) 
+
+                if (t.isEmpty()) {
+                    re = 0;
+                } else {
+                    try {
+                        re = Integer.parseInt(t);// if there is something these ints will be changed, and wnt be changed to 0 because that's impossible in mysql
+                    } catch (NumberFormatException e) {
+                        re = 0;
                     }
-                    if (h.contains("Apartamento")) {
-                        housetyp = 2;
+                }
+                
+                
+                
+                Integer m2;
+                String tb = rentF.getText();
+                if (tb.isEmpty()) {
+                    m2 = 0;
+                } else {
+                    try {
+                        m2 = Integer.valueOf(tb);// if there is something these ints will be changed, and wnt be changed to 0 because that's impossible in mysql
+                    } catch (NumberFormatException e) {
+                        m2 = 0;
                     }
-                    if (h.contains("Ático")) {
-                        housetyp = 3;
-                    }
-                    int id_owner = Integer.parseInt(idF.getText());
-
-                    //String address, int rent, int surface, String description, boolean allowsPets, String code, int housetyp, int id_owner
-                    boolean boo = OperacionesHouse.modifyVivienda(adressF.getText(), re, m2, descriptionF.getText(), allowsPets, codeF.getText(), housetyp, id_owner);
-
-                    if (boo) {
-                        JOptionPane.showMessageDialog(this, "El propietario se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Por algún motivo el propietario no se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
-                    }
-
-                } catch (SQLException ex) {
-                    Logger.getLogger(modifyVivienda.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+                String seleccionPets = (String) SelectorPets.getSelectedItem();
+                boolean allowsPets = seleccionPets.equals("Permite Mascotas");
+                Integer housetyp = 1;
+                String h = SelectorH.getSelectedItem().toString();
+                if (h.contains("Casa")) {
+                    housetyp = 1;// Im using this if structure because using a switch doesn't work at all for some reason
+                }
+                if (h.contains("Apartamento")) {
+                    housetyp = 2;
+                }
+                if (h.contains("Ático")) {
+                    housetyp = 3;
                 }
 
+                Integer id_owner;
+                String tc = idF.getText()
+                        ;
+                if (tc.isEmpty()) {
+                    id_owner = 0;
+                } else {
+                    try {
+                        id_owner = Integer.valueOf(tc);// if there is something these ints will be changed, and wnt be changed to 0 because that's impossible in mysql
+                    } catch (NumberFormatException e) {
+                        id_owner = 0;
+                    }
+                }
+
+
+                //String address, int rent, int surface, String description, boolean allowsPets, String code, int housetyp, int id_owner
+                boolean boo = OperacionesHouse.modifyVivienda(adressF.getText(), re, m2, descriptionF.getText(), allowsPets, codeF.getText(), housetyp, id_owner);
+
+                if (boo) {
+                    JOptionPane.showMessageDialog(this, "El propietario se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                } else {
+                    JOptionPane.showMessageDialog(this, "Por algún motivo el propietario no se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(modifyVivienda.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+        }
 
 
     }//GEN-LAST:event_ModifyButtonActionPerformed

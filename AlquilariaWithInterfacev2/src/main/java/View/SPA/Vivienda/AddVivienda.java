@@ -106,6 +106,7 @@ public class AddVivienda extends javax.swing.JFrame {
 
         Atras.setBackground(new java.awt.Color(137, 111, 181));
         Atras.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        Atras.setForeground(new java.awt.Color(255, 255, 255));
         Atras.setText("Atrás"); // NOI18N
         Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +230,7 @@ public class AddVivienda extends javax.swing.JFrame {
                                 .addComponent(jLabel8)
                                 .addGap(18, 18, 18)
                                 .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(126, Short.MAX_VALUE))
+                        .addContainerGap(121, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(checkAllOwnersButton)

@@ -5,6 +5,7 @@
 package Model;
 
 import Controller.ConnectionDB;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -80,97 +81,45 @@ public class OperacionesHouse {
 
     }
 
-    public static boolean modifyVivienda(String address, int rent, int surface, String description, boolean allowsPets, String code, int housetyp, int id_owner) throws SQLException {
+    public static boolean modifyVivienda(String address, Integer rent, Integer surface, String description, boolean allowsPets, String code, Integer housetyp, Integer id_owner) throws SQLException {
+        boolean result = false;
 
-        boolean boo = false;
+        Connection conn = null;
+        CallableStatement cs = null;
 
         try {
-            conn = ConnectionDB.obtainConnection();
+            conn = ConnectionDB.obtainConnection(); // Asegúrate de tener este método correctamente implementado
 
-            String query = "";
+            cs = conn.prepareCall("{CALL sp_modificar_vivienda(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
 
-            if (!address.isEmpty() && address != null) {// comprobando si los strings enviados se les ha dado intro simplemente, y si se ha introducido algo entonces se modifica esa parte del cliente, una por una, así puedes modificar desde solo un dato del cliente a cambiar el cliente completamente (excepto el id)
-                query = "UPDATE house SET address = ? WHERE code = ?";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, address);
-                ps.setString(2, code);
-                ps.executeUpdate();
-                ps.close();
-                boo = true;
-            } 
+            cs.setString(1, address);
+            cs.setInt(2, rent);
+            cs.setInt(3, surface);
+            cs.setString(4, description);
+            cs.setBoolean(5, allowsPets);
+            cs.setString(6, code);
+            cs.setInt(7, housetyp);
+            cs.setInt(8, id_owner);
+            cs.registerOutParameter(9, java.sql.Types.BOOLEAN);
 
-            if (rent > 0) {
-                query = "UPDATE house SET rent = ? WHERE id = ?";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ps.setInt(1, rent);
-                ps.setString(2, code);
-                ps.executeUpdate();
-                ps.close();
-                boo = true;
+            cs.execute();
+
+            result = cs.getBoolean(9);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            result = false;
+        } finally {
+            if (cs != null) {
+                cs.close();
             }
-
-            if (surface > 0 ) {
-                query = "UPDATE house SET surface = ? WHERE id = ?";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ps.setInt(1, surface);
-                ps.setString(2, code);
-                ps.executeUpdate();
-                ps.close();
-                boo = true;
+            if (conn != null) {
+                conn.close();
             }
-            if (!description.isEmpty() && description != null) {
-                query = "UPDATE house SET description = ? WHERE id = ?";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, description);
-                ps.setString(2, code);
-                ps.executeUpdate();
-                ps.close();
-                boo = true;
-
-            }
-            
-            if (allowsPets == false || allowsPets == true ) {
-                query = "UPDATE house SET allowsPets = ? WHERE id = ?";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ps.setBoolean(1, allowsPets);
-                ps.setString(2, code);
-                ps.executeUpdate();
-                ps.close();
-                boo = true;
-
-            }
-            
-            if (housetyp > 0) {
-                query = "UPDATE house SET housetyp = ? WHERE id = ?";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ps.setInt(1, housetyp);
-                ps.setString(2, code);
-                ps.executeUpdate();
-                ps.close();
-                boo = true;
-            }
-            
-            if (id_owner > 0) {
-                query = "UPDATE house SET id_owner = ? WHERE id = ?";
-                PreparedStatement ps = conn.prepareStatement(query);
-                ps.setInt(1, id_owner);
-                ps.setString(2, code);
-                ps.executeUpdate();
-                ps.close();
-                boo = true;
-            }
-            
-            
-            //conn.close();
-
-        } catch (Exception e) {
-            //conn.close();
-            return false;
         }
 
-        return boo;
-
-    }
+    return result;
+}
 
     public static ResultSet showHouse(String code) throws SQLException {
 

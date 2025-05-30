@@ -228,14 +228,13 @@ public class deleteVivienda extends javax.swing.JFrame {
 
     private void CheckAllhousesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckAllhousesActionPerformed
         // TODO add your handling code here:
-
         try {
 
             ResultSet rs = OperacionesHouse.showAllHouses();
 
             int existe = 0;
 
-            String[] columnas = {"DIRECCIÓN", "PRECIO ALQUILER", "M2", "DESCRIPCIÓN", "PERMITE MASCOTAS", "CÓDIGO", "TIPO DE CASA", "ID OWNER"};
+            String[] columnas = { "CÓDIGO", "DIRECCIÓN", "PRECIO ALQUILER", "M2", "DESCRIPCIÓN", "PERMITE MASCOTAS", "TIPO DE CASA", "ID OWNER"};
             DefaultTableModel model = new DefaultTableModel(columnas, 0);
 
             while (rs.next()) {
@@ -249,16 +248,17 @@ public class deleteVivienda extends javax.swing.JFrame {
                 int housetyp = rs.getInt("housetyp");
                 int idowner = rs.getInt("id_owner");
 
-                String housetype = OperacionesHouse.getHouseType(housetyp, 2);// this way se can obtain the string of the type of house, because the translations are in a mysql table
+                String housetype = OperacionesHouse.getHouseType(housetyp,2);// this way se can obtain the string of the type of house, because the translations are in a mysql table, and you can choose the language,
+                // 1 for english, 2 for spanish
 
-                Object[] fila = {address, rent, surface, description, allowsPets, code, housetype, idowner};
+                Object[] fila = { code, address, rent, surface, description, allowsPets, housetype, idowner};
                 model.addRow(fila);
 
                 existe++;
             }
 
             if (existe == 0) {
-                JOptionPane.showMessageDialog(this, "No se encontraron Casas con esa id", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se encontraron Casas, cree alguna", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JTable tabla = new JTable(model);
                 JScrollPane scroll = new JScrollPane(tabla);
@@ -273,7 +273,9 @@ public class deleteVivienda extends javax.swing.JFrame {
 
         } catch (SQLException sb) {
             JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
-        }     
+        }
+
+
     }//GEN-LAST:event_CheckAllhousesActionPerformed
 
     /**

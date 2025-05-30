@@ -144,6 +144,45 @@ END;
 DELIMITER ;
 
 
+DELIMITER //
+CREATE PROCEDURE sp_modificar_vivienda(
+    IN v_address VARCHAR(200),
+    IN v_rent INT,
+    IN v_surface INT,
+    IN v_description VARCHAR(1000),
+    IN v_allowsPets BOOLEAN,
+    IN v_code VARCHAR(50),
+    IN v_housetyp INT,
+    IN v_id_owner INT,
+    OUT v_boo BOOLEAN
+)
+BEGIN
+    DECLARE aa INT DEFAULT 0;
 
+    UPDATE house SET address = v_address WHERE code = v_code;
+    SET aa = aa + ROW_COUNT();-- long life ROW_COUNT()
+
+    UPDATE house SET rent = v_rent WHERE code = v_code;
+    SET aa = aa + ROW_COUNT();
+
+    UPDATE house SET surface = v_surface WHERE code = v_code;
+    SET aa = aa + ROW_COUNT();
+
+    UPDATE house SET description = v_description WHERE code = v_code;
+    SET aa = aa + ROW_COUNT();
+
+    UPDATE house SET allowsPets = v_allowsPets WHERE code = v_code;
+    SET aa = aa + ROW_COUNT();
+
+    UPDATE house SET housetyp = v_housetyp WHERE code = v_code;
+    SET aa = aa + ROW_COUNT();
+
+    UPDATE house SET id_owner = v_id_owner WHERE code = v_code;
+    SET aa = aa + ROW_COUNT();
+
+    SET v_boo = aa > 0;
+END //
+
+DELIMITER ;
 
 
