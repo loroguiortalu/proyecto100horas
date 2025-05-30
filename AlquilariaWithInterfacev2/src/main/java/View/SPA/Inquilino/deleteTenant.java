@@ -125,7 +125,7 @@ public class deleteTenant extends javax.swing.JFrame {
         CheckAllTenant.setBackground(new java.awt.Color(230, 153, 153));
         CheckAllTenant.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
         CheckAllTenant.setForeground(new java.awt.Color(51, 0, 16));
-        CheckAllTenant.setText("Consultar Propietarios");
+        CheckAllTenant.setText("Consultar Inquilinos");
         CheckAllTenant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CheckAllTenantActionPerformed(evt);
@@ -258,9 +258,9 @@ public class deleteTenant extends javax.swing.JFrame {
                 String nombre = rs.getString("name");
                 String email = rs.getString("email");
                 String telefono = rs.getString("phonenumber");
-                boolean hasPets = rs.getBoolean("allowsPets");
+                boolean haspets = rs.getBoolean("haspets");
 
-                Object[] fila = {id, dni, nombre, email, telefono, hasPets};
+                Object[] fila = {id, dni, nombre, email, telefono, haspets};
                 model.addRow(fila);
 
                 existe++;

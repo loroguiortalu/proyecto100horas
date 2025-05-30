@@ -232,7 +232,7 @@ public class consultarTenant extends javax.swing.JFrame {
                         String nombre = rs.getString("name");
                         String email = rs.getString("email");
                         String telefono = rs.getString("phonenumber");
-                        boolean hasPets = rs.getBoolean("allowsPets");
+                        boolean hasPets = rs.getBoolean("haspets");
 
                         Object[] fila = {id, dni, nombre, email, telefono, hasPets};
                         model.addRow(fila);
@@ -291,7 +291,7 @@ public class consultarTenant extends javax.swing.JFrame {
                 String nombre = rs.getString("name");
                 String email = rs.getString("email");
                 String telefono = rs.getString("phonenumber");
-                boolean hasPets = rs.getBoolean("allowsPets");
+                boolean hasPets = rs.getBoolean("haspets");
 
                 Object[] fila = {id, dni, nombre, email, telefono, hasPets};
                 model.addRow(fila);

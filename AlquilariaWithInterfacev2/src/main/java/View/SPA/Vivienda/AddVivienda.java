@@ -175,7 +175,7 @@ public class AddVivienda extends javax.swing.JFrame {
         checkAllOwnersButton.setBackground(new java.awt.Color(203, 176, 249));
         checkAllOwnersButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
         checkAllOwnersButton.setForeground(new java.awt.Color(61, 52, 76));
-        checkAllOwnersButton.setText("Consultar  Propietarios");
+        checkAllOwnersButton.setText("Consultar  Viviendas");
         checkAllOwnersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkAllOwnersButtonActionPerformed(evt);

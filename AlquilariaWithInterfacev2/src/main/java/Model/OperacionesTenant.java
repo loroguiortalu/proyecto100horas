@@ -111,7 +111,7 @@ public class OperacionesTenant {
         }                
             
         if (hasPets != null) {
-            query = "UPDATE tenant SET haspets = ? WHERE code = ?";
+            query = "UPDATE tenant SET haspets = ? WHERE id = ?";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setBoolean(1, hasPets);
             ps.setInt(2, id);
