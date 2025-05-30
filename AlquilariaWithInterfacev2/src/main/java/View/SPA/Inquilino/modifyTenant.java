@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package View.SPA.Propietario;
+package View.SPA.Inquilino;
 
+import View.SPA.Propietario.*;
 import View.SPA.*;
 import View.*;
 import javax.swing.JOptionPane;
-import Model.OperacionesOwner;
+import Model.OperacionesTenant;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -21,14 +22,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Loro
  */
-public class modifyPropietario extends javax.swing.JFrame {
+public class modifyTenant extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(modifyPropietario.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(modifyTenant.class.getName());
 
     /**
      * Creates new form Spanish
      */
-    public modifyPropietario() {
+    public modifyTenant() {
         initComponents();
         setLocationRelativeTo(null);//center in the screen
         
@@ -64,7 +65,8 @@ public class modifyPropietario extends javax.swing.JFrame {
         phoneField = new javax.swing.JTextField();
         emailField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        checkAllOButton = new javax.swing.JButton();
+        checkAllTenantsButton = new javax.swing.JButton();
+        hasPetsComboBox = new javax.swing.JComboBox<>();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -97,10 +99,10 @@ public class modifyPropietario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(224, 254, 224));
+        jPanel1.setBackground(new java.awt.Color(255, 175, 175));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
-        Atras.setBackground(new java.awt.Color(107, 137, 107));
+        Atras.setBackground(new java.awt.Color(163, 109, 109));
         Atras.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         Atras.setForeground(new java.awt.Color(255, 255, 255));
         Atras.setText("Atrás"); // NOI18N
@@ -112,7 +114,7 @@ public class modifyPropietario extends javax.swing.JFrame {
 
         jLabelChooseLanguage1.setFont(new java.awt.Font("Futura", 0, 48)); // NOI18N
         jLabelChooseLanguage1.setForeground(new java.awt.Color(51, 0, 0));
-        jLabelChooseLanguage1.setText("Modificar Propietario");
+        jLabelChooseLanguage1.setText("Modificar Inqulino");
 
         idField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
 
@@ -120,9 +122,9 @@ public class modifyPropietario extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
         jLabel3.setText("Id");
 
-        ModifyButton.setBackground(new java.awt.Color(174, 202, 174));
+        ModifyButton.setBackground(new java.awt.Color(230, 153, 153));
         ModifyButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-        ModifyButton.setForeground(new java.awt.Color(0, 51, 51));
+        ModifyButton.setForeground(new java.awt.Color(51, 0, 16));
         ModifyButton.setText("Modificar");
         ModifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,9 +132,9 @@ public class modifyPropietario extends javax.swing.JFrame {
             }
         });
 
-        checkByIdButton.setBackground(new java.awt.Color(174, 202, 174));
+        checkByIdButton.setBackground(new java.awt.Color(230, 153, 153));
         checkByIdButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-        checkByIdButton.setForeground(new java.awt.Color(0, 51, 51));
+        checkByIdButton.setForeground(new java.awt.Color(51, 0, 16));
         checkByIdButton.setText("Consultar \nEsa ID");
         checkByIdButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,15 +166,18 @@ public class modifyPropietario extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(51, 0, 0));
         jLabel8.setText("Email");
 
-        checkAllOButton.setBackground(new java.awt.Color(174, 202, 174));
-        checkAllOButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-        checkAllOButton.setForeground(new java.awt.Color(0, 51, 51));
-        checkAllOButton.setText("Consultar  Propietarios");
-        checkAllOButton.addActionListener(new java.awt.event.ActionListener() {
+        checkAllTenantsButton.setBackground(new java.awt.Color(230, 153, 153));
+        checkAllTenantsButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        checkAllTenantsButton.setForeground(new java.awt.Color(51, 0, 16));
+        checkAllTenantsButton.setText("Consultar  Inquilinos");
+        checkAllTenantsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkAllOButtonActionPerformed(evt);
+                checkAllTenantsButtonActionPerformed(evt);
             }
         });
+
+        hasPetsComboBox.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        hasPetsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiene Mascotas", "No tiene Mascotas" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,75 +186,76 @@ public class modifyPropietario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(checkByIdButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(checkAllOButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(checkAllTenantsButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addGap(22, 22, 22))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DniField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hasPetsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ModifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(215, 215, 215))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelChooseLanguage1)
-                        .addGap(123, 123, 123))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(DniField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(143, 143, 143))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(ModifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(215, 215, 215))))
+                        .addGap(134, 134, 134))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DniField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DniField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(27, 27, 27)
+                .addGap(26, 26, 26)
+                .addComponent(hasPetsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(ModifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkAllOButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkAllTenantsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkByIdButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
@@ -271,7 +277,7 @@ public class modifyPropietario extends javax.swing.JFrame {
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         // TODO add your handling code here:
         // botón atrás
-        new MantenimientoPropietario().setVisible(true); 
+        new MantenimientoInquilino().setVisible(true); 
         this.dispose();
 
     }//GEN-LAST:event_AtrasActionPerformed
@@ -285,8 +291,6 @@ public class modifyPropietario extends javax.swing.JFrame {
 
             if (idField.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
-            } else if (DniField.getText().isEmpty() && NameField.getText().isEmpty() && phoneField.getText().isEmpty() && emailField.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Rellene al menos uno de los campos DNI, Nombre, email o teléfono para modificar el propietario", "Info", JOptionPane.INFORMATION_MESSAGE);// info para que se rellenen los campos que no son id
             } else {
 
                 num = Integer.parseInt(idField.getText());
@@ -298,16 +302,18 @@ public class modifyPropietario extends javax.swing.JFrame {
                     num = Integer.parseInt(idField.getText());
 
                     try {
-                        boolean boo = OperacionesOwner.modifyPropietario(num, DniField.getText(), NameField.getText(), phoneField.getText(), emailField.getText());
+                        String seleccionMascotas = (String) hasPetsComboBox.getSelectedItem();
+                        boolean hasPets = seleccionMascotas.equals("Tiene Mascotas");                        
+                        boolean boo = OperacionesTenant.modifyTenant(num, DniField.getText(), NameField.getText(), phoneField.getText(), emailField.getText(), hasPets);
 
                         if (boo) {
-                            JOptionPane.showMessageDialog(this, "El propietario se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                            JOptionPane.showMessageDialog(this, "El inquilino se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
                         } else {
-                            JOptionPane.showMessageDialog(this, "Por algún motivo el propietario no se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
+                            JOptionPane.showMessageDialog(this, "Por algún motivo el inquilino no se ha modificado", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
                         }
 
                     } catch (SQLException ex) {
-                        Logger.getLogger(modifyPropietario.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(modifyTenant.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
                     JOptionPane.showMessageDialog(this, "Rellene el campo id con un número", "Info", JOptionPane.INFORMATION_MESSAGE);// añadiendo "Error", JOptionPane.ERROR_MESSAGE al final cambia el icoono a error
@@ -323,7 +329,6 @@ public class modifyPropietario extends javax.swing.JFrame {
 
     private void checkByIdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkByIdButtonActionPerformed
         // TODO add your handling code here:
-        
         boolean isNum = false;
         int num = 0;
         
@@ -344,37 +349,36 @@ public class modifyPropietario extends javax.swing.JFrame {
 
                     String sb = idField.getText();
                     num = Integer.parseInt(idField.getText());
-                    ResultSet rs = OperacionesOwner.showOwner(num);
+                    ResultSet rs = OperacionesTenant.showTenant(num);
 
                     int existe = 0;
 
-                    String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono"};
+                    String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono", "Tiene Mascotas"};
                     DefaultTableModel model = new DefaultTableModel(columnas, 0);
-                    
+
                     while (rs.next()) {
-             
-                        //System.out.println("Id: " + rs.getInt("id") + " DNI: " + rs.getString("DNI"));
-                        //System.out.println("Nombre: " + rs.getString("name") + "Email: " + rs.getString("email") + " Teléfono: " + rs.getString("phonenumber"));
+
                         int id = rs.getInt("id");
                         String dni = rs.getString("dni");
                         String nombre = rs.getString("name");
                         String email = rs.getString("email");
                         String telefono = rs.getString("phonenumber");
+                        boolean hasPets = rs.getBoolean("allowsPets");
 
-                        Object[] fila = {id, dni, nombre, email, telefono};
+                        Object[] fila = {id, dni, nombre, email, telefono, hasPets};
                         model.addRow(fila);
 
                         existe++;
                     }
 
                     if (existe == 0) {
-                        JOptionPane.showMessageDialog(this, "No se encontraron Propietarios con ese id", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "No se encontraron Inquilinos con ese id", "Error", JOptionPane.ERROR_MESSAGE);
                     } else {
                         JTable tabla = new JTable(model);
                         JScrollPane scroll = new JScrollPane(tabla);
 
                         // Crear ventana emergente con la tabla
-                        JDialog dialogo = new JDialog(this, "Propietarios encontrados", true);
+                        JDialog dialogo = new JDialog(this, "Inqulinos encontrados", true);
                         dialogo.getContentPane().add(scroll);
                         dialogo.setSize(600, 300);
                         dialogo.setLocationRelativeTo(this); // Centrar respecto a la ventana principal
@@ -400,50 +404,50 @@ public class modifyPropietario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_checkByIdButtonActionPerformed
 
-    private void checkAllOButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAllOButtonActionPerformed
+    private void checkAllTenantsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAllTenantsButtonActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
 
-                    ResultSet rs = OperacionesOwner.showAllOwners();
+            ResultSet rs = OperacionesTenant.showAllTenants();
 
-                    int existe = 0;
+            int existe = 0;
 
-                    String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono"};
-                    DefaultTableModel model = new DefaultTableModel(columnas, 0);
-                    
-                    while (rs.next()) {
-             
+            String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono", "Tiene Mascotas"};
+            DefaultTableModel model = new DefaultTableModel(columnas, 0);
 
-                        int id = rs.getInt("id");
-                        String dni = rs.getString("dni");
-                        String nombre = rs.getString("name");
-                        String email = rs.getString("email");
-                        String telefono = rs.getString("phonenumber");
+            while (rs.next()) {
 
-                        Object[] fila = {id, dni, nombre, email, telefono};
-                        model.addRow(fila);
+                int id = rs.getInt("id");
+                String dni = rs.getString("dni");
+                String nombre = rs.getString("name");
+                String email = rs.getString("email");
+                String telefono = rs.getString("phonenumber");
+                boolean hasPets = rs.getBoolean("allowsPets");
 
-                        existe++;
-                    }
+                Object[] fila = {id, dni, nombre, email, telefono, hasPets};
+                model.addRow(fila);
 
-                    if (existe == 0) {
-                        JOptionPane.showMessageDialog(this, "No se encontraron Propietarios", "Error", JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        JTable tabla = new JTable(model);
-                        JScrollPane scroll = new JScrollPane(tabla);
+                existe++;
+            }
 
-                        // Crear ventana emergente con la tabla
-                        JDialog dialogo = new JDialog(this, "Propietarios", true);
-                        dialogo.getContentPane().add(scroll);
-                        dialogo.setSize(600, 300);
-                        dialogo.setLocationRelativeTo(this); // centrar a esta ventana
-                        dialogo.setVisible(true);
-                    }
+            if (existe == 0) {
+                JOptionPane.showMessageDialog(this, "No se encontraron Inquilinos", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JTable tabla = new JTable(model);
+                JScrollPane scroll = new JScrollPane(tabla);
 
-                } catch (SQLException sb) {
-                        JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
-                }             
-    }//GEN-LAST:event_checkAllOButtonActionPerformed
+                // Crear ventana emergente con la tabla
+                JDialog dialogo = new JDialog(this, "Inquilinos", true);
+                dialogo.getContentPane().add(scroll);
+                dialogo.setSize(600, 300);
+                dialogo.setLocationRelativeTo(this); // centrar a esta ventana
+                dialogo.setVisible(true);
+            }
+
+        } catch (SQLException sb) {
+            JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_checkAllTenantsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -467,7 +471,7 @@ public class modifyPropietario extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new modifyPropietario().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new modifyTenant().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -477,9 +481,10 @@ public class modifyPropietario extends javax.swing.JFrame {
     private javax.swing.JTextField DniField4;
     private javax.swing.JButton ModifyButton;
     private javax.swing.JTextField NameField;
-    private javax.swing.JButton checkAllOButton;
+    private javax.swing.JButton checkAllTenantsButton;
     private javax.swing.JButton checkByIdButton;
     private javax.swing.JTextField emailField;
+    private javax.swing.JComboBox<String> hasPetsComboBox;
     private javax.swing.JTextField idField;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

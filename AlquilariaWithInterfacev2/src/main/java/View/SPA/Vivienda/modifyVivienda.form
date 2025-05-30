@@ -495,14 +495,11 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="rentF" min="-2" pref="379" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="jLabelChooseLanguage1" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
                                   <Component id="ModifyButton" min="-2" pref="265" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
-                                  <Component id="jLabelChooseLanguage1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>

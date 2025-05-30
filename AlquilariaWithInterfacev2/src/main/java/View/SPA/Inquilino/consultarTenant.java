@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package View.SPA.Propietario;
+package View.SPA.Inquilino;
 
+import View.SPA.Propietario.*;
 import View.SPA.*;
 import View.*;
 import javax.swing.JOptionPane;
-import Model.OperacionesOwner;
+import Model.OperacionesTenant;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -21,14 +22,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Loro
  */
-public class consultarPropietario extends javax.swing.JFrame {
+public class consultarTenant extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(consultarPropietario.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(consultarTenant.class.getName());
 
     /**
      * Creates new form Spanish
      */
-    public consultarPropietario() {
+    public consultarTenant() {
         initComponents();
         setLocationRelativeTo(null);//center in the screen
         
@@ -55,7 +56,7 @@ public class consultarPropietario extends javax.swing.JFrame {
         idField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         CheckButton = new javax.swing.JButton();
-        CheckAllButton = new javax.swing.JButton();
+        CheckAllTenantButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -88,10 +89,10 @@ public class consultarPropietario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(224, 254, 224));
+        jPanel1.setBackground(new java.awt.Color(255, 175, 175));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
-        Atras.setBackground(new java.awt.Color(107, 137, 107));
+        Atras.setBackground(new java.awt.Color(163, 109, 109));
         Atras.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         Atras.setForeground(new java.awt.Color(255, 255, 255));
         Atras.setText("Atrás"); // NOI18N
@@ -103,7 +104,7 @@ public class consultarPropietario extends javax.swing.JFrame {
 
         jLabelChooseLanguage1.setFont(new java.awt.Font("Futura", 0, 48)); // NOI18N
         jLabelChooseLanguage1.setForeground(new java.awt.Color(51, 0, 0));
-        jLabelChooseLanguage1.setText("Consultar Propietario");
+        jLabelChooseLanguage1.setText("Consultar Tenant");
 
         idField.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
 
@@ -111,9 +112,9 @@ public class consultarPropietario extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
         jLabel3.setText("Id");
 
-        CheckButton.setBackground(new java.awt.Color(174, 202, 174));
+        CheckButton.setBackground(new java.awt.Color(230, 153, 153));
         CheckButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-        CheckButton.setForeground(new java.awt.Color(0, 51, 51));
+        CheckButton.setForeground(new java.awt.Color(51, 0, 16));
         CheckButton.setText(" Consultar");
         CheckButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,13 +122,13 @@ public class consultarPropietario extends javax.swing.JFrame {
             }
         });
 
-        CheckAllButton.setBackground(new java.awt.Color(174, 202, 174));
-        CheckAllButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
-        CheckAllButton.setForeground(new java.awt.Color(0, 51, 51));
-        CheckAllButton.setText("Consultar Todos");
-        CheckAllButton.addActionListener(new java.awt.event.ActionListener() {
+        CheckAllTenantButton.setBackground(new java.awt.Color(230, 153, 153));
+        CheckAllTenantButton.setFont(new java.awt.Font("Caladea", 0, 24)); // NOI18N
+        CheckAllTenantButton.setForeground(new java.awt.Color(51, 0, 16));
+        CheckAllTenantButton.setText("Consultar Todos");
+        CheckAllTenantButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CheckAllButtonActionPerformed(evt);
+                CheckAllTenantButtonActionPerformed(evt);
             }
         });
 
@@ -136,42 +137,40 @@ public class consultarPropietario extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(177, 177, 177))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(CheckAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CheckAllTenantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(227, 227, 227)
+                .addComponent(CheckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(117, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelChooseLanguage1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(CheckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabelChooseLanguage1)))
-                .addContainerGap(105, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(177, 177, 177))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(43, 43, 43)
                 .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(132, 132, 132)
+                .addGap(128, 128, 128)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(68, 68, 68)
                 .addComponent(CheckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CheckAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CheckAllTenantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -192,7 +191,7 @@ public class consultarPropietario extends javax.swing.JFrame {
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         // TODO add your handling code here:
         // botón atrás
-        new MantenimientoPropietario().setVisible(true); 
+        new MantenimientoInquilino().setVisible(true); 
         this.dispose();
 
     }//GEN-LAST:event_AtrasActionPerformed
@@ -219,35 +218,36 @@ public class consultarPropietario extends javax.swing.JFrame {
 
                     String sb = idField.getText();
                     num = Integer.parseInt(idField.getText());
-                    ResultSet rs = OperacionesOwner.showOwner(num);
+                    ResultSet rs = OperacionesTenant.showTenant(num);
 
                     int existe = 0;
 
-                    String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono"};
+                    String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono", "Tiene Mascotas"};
                     DefaultTableModel model = new DefaultTableModel(columnas, 0);
-                    
+
                     while (rs.next()) {
-             
+
                         int id = rs.getInt("id");
                         String dni = rs.getString("dni");
                         String nombre = rs.getString("name");
                         String email = rs.getString("email");
                         String telefono = rs.getString("phonenumber");
+                        boolean hasPets = rs.getBoolean("allowsPets");
 
-                        Object[] fila = {id, dni, nombre, email, telefono};
+                        Object[] fila = {id, dni, nombre, email, telefono, hasPets};
                         model.addRow(fila);
 
                         existe++;
                     }
 
                     if (existe == 0) {
-                        JOptionPane.showMessageDialog(this, "No se encontraron Propietarios con ese id", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "No se encontraron Inquilinos con ese id", "Error", JOptionPane.ERROR_MESSAGE);
                     } else {
                         JTable tabla = new JTable(model);
                         JScrollPane scroll = new JScrollPane(tabla);
 
                         // Crear ventana emergente con la tabla
-                        JDialog dialogo = new JDialog(this, "Propietarios encontrados", true);
+                        JDialog dialogo = new JDialog(this, "Inqulinos encontrados", true);
                         dialogo.getContentPane().add(scroll);
                         dialogo.setSize(600, 300);
                         dialogo.setLocationRelativeTo(this); // Centrar respecto a la ventana principal
@@ -273,51 +273,50 @@ public class consultarPropietario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CheckButtonActionPerformed
 
-    private void CheckAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckAllButtonActionPerformed
+    private void CheckAllTenantButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckAllTenantButtonActionPerformed
         // TODO add your handling code here:
-        
-         try {
+        try {
 
-                    ResultSet rs = OperacionesOwner.showAllOwners();
+            ResultSet rs = OperacionesTenant.showAllTenants();
 
-                    int existe = 0;
+            int existe = 0;
 
-                    String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono"};
-                    DefaultTableModel model = new DefaultTableModel(columnas, 0);
-                    
-                    while (rs.next()) {
-             
+            String[] columnas = {"ID", "DNI", "Nombre", "Email", "Teléfono", "Tiene Mascotas"};
+            DefaultTableModel model = new DefaultTableModel(columnas, 0);
 
-                        int id = rs.getInt("id");
-                        String dni = rs.getString("dni");
-                        String nombre = rs.getString("name");
-                        String email = rs.getString("email");
-                        String telefono = rs.getString("phonenumber");
+            while (rs.next()) {
 
-                        Object[] fila = {id, dni, nombre, email, telefono};
-                        model.addRow(fila);
+                int id = rs.getInt("id");
+                String dni = rs.getString("dni");
+                String nombre = rs.getString("name");
+                String email = rs.getString("email");
+                String telefono = rs.getString("phonenumber");
+                boolean hasPets = rs.getBoolean("allowsPets");
 
-                        existe++;
-                    }
+                Object[] fila = {id, dni, nombre, email, telefono, hasPets};
+                model.addRow(fila);
 
-                    if (existe == 0) {
-                        JOptionPane.showMessageDialog(this, "No se encontraron Propietarios", "Error", JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        JTable tabla = new JTable(model);
-                        JScrollPane scroll = new JScrollPane(tabla);
+                existe++;
+            }
 
-                        // Crear ventana emergente con la tabla
-                        JDialog dialogo = new JDialog(this, "Propietarios encontrados", true);
-                        dialogo.getContentPane().add(scroll);
-                        dialogo.setSize(600, 300);
-                        dialogo.setLocationRelativeTo(this); // centrar a esta ventana
-                        dialogo.setVisible(true);
-                    }
+            if (existe == 0) {
+                JOptionPane.showMessageDialog(this, "No se encontraron Inquilinos", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JTable tabla = new JTable(model);
+                JScrollPane scroll = new JScrollPane(tabla);
 
-                } catch (SQLException sb) {
-                        JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-    }//GEN-LAST:event_CheckAllButtonActionPerformed
+                // Crear ventana emergente con la tabla
+                JDialog dialogo = new JDialog(this, "Inquilinos", true);
+                dialogo.getContentPane().add(scroll);
+                dialogo.setSize(600, 300);
+                dialogo.setLocationRelativeTo(this); // centrar a esta ventana
+                dialogo.setVisible(true);
+            }
+
+        } catch (SQLException sb) {
+            JOptionPane.showMessageDialog(this, "Error con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_CheckAllTenantButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -341,7 +340,7 @@ public class consultarPropietario extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new consultarPropietario().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new consultarTenant().setVisible(true));
     }
     
     
@@ -350,7 +349,7 @@ public class consultarPropietario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
-    private javax.swing.JButton CheckAllButton;
+    private javax.swing.JButton CheckAllTenantButton;
     private javax.swing.JButton CheckButton;
     private javax.swing.JTextField DniField2;
     private javax.swing.JTextField DniField4;

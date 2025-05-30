@@ -90,7 +90,7 @@ DROP TABLE IF EXISTS contract;
 CREATE TABLE contract (
     initdate DATE NOT NULL,
     enddate DATE NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
+    price INT NOT NULL,
     status INT NOT NULL,
     code_house VARCHAR(50) NOT NULL,
     id_tenant INT NOT NULL,
@@ -145,7 +145,7 @@ DELIMITER ;
 
 
 
--- I could have done like this the modification, but I prefered to use PreparedStatements
+-- I could have done like this the modification, but I prefered to use PreparedStatements because it's just more convenient (and I didn't liked that I had to put something in all the fields or those wont be modified, or bad modified)
 DELIMITER //
 CREATE PROCEDURE sp_modificar_vivienda(
     IN v_address VARCHAR(200),

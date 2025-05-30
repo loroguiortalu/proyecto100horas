@@ -4,7 +4,8 @@
  */
 package View.SPA;
 
-import View.*;
+import View.SPA.Inquilino.*;
+import View.SpanishMenu;
 
 /**
  *
@@ -35,12 +36,12 @@ public class MantenimientoInquilino extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabelChooseLanguage = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jLabelChooseLanguage1 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        BorrButton = new javax.swing.JButton();
+        ModifyButton = new javax.swing.JButton();
+        checkButton = new javax.swing.JButton();
+        AddButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -62,11 +63,13 @@ public class MantenimientoInquilino extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 175, 175));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 720));
 
-        jButton1.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        jButton1.setText("Atrás"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setBackground(new java.awt.Color(163, 109, 109));
+        backButton.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        backButton.setForeground(new java.awt.Color(255, 255, 255));
+        backButton.setText("Atrás"); // NOI18N
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -74,35 +77,43 @@ public class MantenimientoInquilino extends javax.swing.JFrame {
         jLabelChooseLanguage1.setForeground(new java.awt.Color(51, 0, 0));
         jLabelChooseLanguage1.setText("Mantenimiento Inquilino");
 
-        jButton8.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        jButton8.setText("Borrar inquilino"); // NOI18N
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        BorrButton.setBackground(new java.awt.Color(230, 153, 153));
+        BorrButton.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        BorrButton.setForeground(new java.awt.Color(51, 0, 16));
+        BorrButton.setText("Borrar inquilino"); // NOI18N
+        BorrButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                BorrButtonActionPerformed(evt);
             }
         });
 
-        jButton9.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        jButton9.setText("Modificar inquilino"); // NOI18N
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        ModifyButton.setBackground(new java.awt.Color(230, 153, 153));
+        ModifyButton.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        ModifyButton.setForeground(new java.awt.Color(51, 0, 16));
+        ModifyButton.setText("Modificar inquilino"); // NOI18N
+        ModifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                ModifyButtonActionPerformed(evt);
             }
         });
 
-        jButton10.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        jButton10.setText("Consultar inquilino"); // NOI18N
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        checkButton.setBackground(new java.awt.Color(230, 153, 153));
+        checkButton.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        checkButton.setForeground(new java.awt.Color(51, 0, 16));
+        checkButton.setText("Consultar inquilino"); // NOI18N
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                checkButtonActionPerformed(evt);
             }
         });
 
-        jButton11.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        jButton11.setText("Añadir inquilino"); // NOI18N
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        AddButton.setBackground(new java.awt.Color(230, 153, 153));
+        AddButton.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        AddButton.setForeground(new java.awt.Color(51, 0, 16));
+        AddButton.setText("Añadir inquilino"); // NOI18N
+        AddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                AddButtonActionPerformed(evt);
             }
         });
 
@@ -112,35 +123,36 @@ public class MantenimientoInquilino extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 797, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(102, 102, 102)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE))
+                    .addComponent(BorrButton, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
+                    .addComponent(ModifyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(checkButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AddButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelChooseLanguage1)
-                .addGap(173, 173, 173))
+                .addGap(255, 255, 255))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabelChooseLanguage1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BorrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ModifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
@@ -158,29 +170,37 @@ public class MantenimientoInquilino extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         // botón atrás
         new SpanishMenu().setVisible(true);
         this.dispose();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void BorrButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        new deleteTenant().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BorrButtonActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void ModifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifyButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+        new modifyTenant().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_ModifyButtonActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+        new consultarTenant().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_checkButtonActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+        new AddTenant().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_AddButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,11 +228,11 @@ public class MantenimientoInquilino extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton AddButton;
+    private javax.swing.JButton BorrButton;
+    private javax.swing.JButton ModifyButton;
+    private javax.swing.JButton backButton;
+    private javax.swing.JButton checkButton;
     private javax.swing.JLabel jLabelChooseLanguage;
     private javax.swing.JLabel jLabelChooseLanguage1;
     private javax.swing.JPanel jPanel1;

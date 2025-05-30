@@ -132,7 +132,6 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="descriptionField" min="-2" pref="379" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabelChooseLanguage1" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -157,6 +156,10 @@
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="idField" min="-2" pref="379" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabelChooseLanguage1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="121" max="32767" attributes="0"/>
